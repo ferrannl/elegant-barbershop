@@ -54,7 +54,7 @@ button{font:inherit}
   /* Background layers: dark overlay + your image */
   background-image:
     linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.30)),
-    url("images/hero.jpg");
+    url("hero.jpg");
   background-repeat: no-repeat, no-repeat;
   background-position: center top, center top;
   background-size: cover, contain;      /* overlay covers; image stays fully visible */
