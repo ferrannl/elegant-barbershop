@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ferran Hendriks" />
+  <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Elegant Barbershop | Den Bosch</title>
+
+  <!-- Mini fix voor RTL en wat nette typografie zonder je style.css te breken -->
+  <style>
+    :root{ --nl-red:#d21f2b; --nl-blue:#1f3ea6; }
+    .parallax h1 hr { border:0; border-top:4px solid var(--nl-red); width:140px; margin:0 auto 10px; }
+    .lang-switch { position: absolute; top: 12px; right: 12px; z-index: 20; }
+    .lang-switch select { padding:6px 10px; border-radius:10px; border:1px solid #ccc; }
+    [dir="rtl"] .menu { direction: rtl; }
+    [dir="rtl"] .submenu { text-align: right; }
+    .gallery .blok { display:flex; gap:16px; align-items:center; }
+    .gallery .blok img.blok { width:50%; max-width:520px; height:auto; object-fit:cover; }
+    .gallery .blok .text { width:50%; }
+    @media (max-width:900px){
+      .gallery .blok { flex-direction:column; }
+      .gallery .blok .text, .gallery .blok img.blok { width:100%; }
+    }
+    .btn-primary {
+      background: var(--nl-red); color:#fff; padding:10px 16px; border-radius:999px; text-decoration:none; display:inline-block;
+    }
+    .btn-outline {
+      border:2px solid var(--nl-blue); color:var(--nl-blue); padding:8px 14px; border-radius:999px; text-decoration:none; display:inline-block;
+    }
+    .notice-card { background:#fff; border:1px solid #e3e6ef; border-radius:12px; padding:12px; }
+  </style>
+</head>
+
+<body>
+  <!-- Parallax hero (houd je bestaande classes) -->
+  <div class="parallax" id="hero">
+    <div class="lang-switch">
+      <label for="lang" class="sr-only">Language</label>
+      <select id="lang" aria-label="Language">
+        <option value="nl">Nederlands</option>
+        <option value="en">English</option>
+        <option value="pl">Polski</option>
+        <option value="ar">العربية</option>
+      </select>
+    </div>
+
+    <img src="images/logo-min.png" alt="Elegant Barbershop logo">
+    <h1>
+      <hr>
+      <span data-i18n="hero_title">Knap kapsel, chill vibe.</span>
+    </h1>
+  </div>
+
+  <div class="wrapper">
+    <header class="header">
+      <div class="logo">
+        <a href="index.html"><img src="images/logo-min.png" alt="Elegant Barbershop logo"></a>
+      </div>
+
+      <nav>
+        <input id="check" type="checkbox">
+        <label for="check" class="menu-handle"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></label>
+
+        <!-- Menu: beknopt gehouden -->
+        <ul class="menu">
+          <li><a href="#hero" data-i18n="nav_home">Home</a></li>
+          <li><a href="#services" data-i18n="nav_services">Diensten</a></li>
+          <li><a href="https://www.google.com/maps/place/Elegant+Barbershop/@51.6885408,5.3109113,3a,75y,90t/data=!3m8!1e2!3m6!1sCIHM0ogKEICAgICvtoy7hQE!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FAC9h4npmxS4d_tYA8CvKB_uyUOCVISjcsjIyBbdLNqtvFh8GeinvyoP_CVqPiKOYu3unGvkXsaBV7MGU7AXwYjJrPEW15M3uQ2c__jCfE41nfTpgTqIm5U3bJkKcmZ0mkBEd-hfNGrVoVg%3Dw114-h86-k-no!7i4032!8i3024!4m7!3m6!1s0x47c6ef0037339da9:0x106f416e13093e4e!8m2!3d51.6886613!4d5.310933!10e5!16s%2Fg%2F11wth2zk5n?hl=nl&entry=ttu&g_ep=EgoyMDI1MDkyMS4wIKXMDSoASAFQAw%3D%3D">Galerij</a></li>
+          <!-- AANGEPAST: alleen 'Info', geen submenu -->
+          <li><a href="#contact"data-i18n="nav_contact">Info</a></li>
+          <!-- <li><a href="reviews.html">Reviews</a></li> -->
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <!-- Zijblok / Mededeling: openingstijden (per dag) -->
+      <aside class="info">
+        <img src="images/notice.jpg" alt="Sfeerbeeld barbershop">
+        <div class="elementor-widget-container notice-card">
+          <div data-i18n="notice_intro">Let op onze openingstijden</div>
+          <div>&nbsp;</div>
+
+          <div><b data-i18n="d_mon">Maandag</b></div>
+          <div><b data-i18n="h_mon">12:00–18:00</b></div>
+          <div>&nbsp;</div>
+
+          <div><b data-i18n="d_tue">Dinsdag</b></div>
+          <div><b data-i18n="h_tue">09:00–18:00</b></div>
+          <div>&nbsp;</div>
+
+          <div><b data-i18n="d_wed">Woensdag</b></div>
+          <div><b data-i18n="h_wed">09:00–18:00</b></div>
+          <div>&nbsp;</div>
+
+          <div><b data-i18n="d_thu">Donderdag</b></div>
+          <div><b data-i18n="h_thu">09:00–18:00</b></div>
+          <div>&nbsp;</div>
+
+          <div><b data-i18n="d_fri">Vrijdag</b></div>
+          <div><b data-i18n="h_fri">09:00–18:00</b></div>
+          <div>&nbsp;</div>
+
+          <div><b data-i18n="d_sat">Zaterdag</b></div>
+          <div><b data-i18n="h_sat">09:00–18:00</b></div>
+          <div>&nbsp;</div>
+
+          <div><b data-i18n="d_sun">Zondag</b></div>
+          <div><b data-i18n="h_sun">Gesloten</b></div>
+        </div>
+        <br>
+        <a href="#location" data-i18n="notice_more">Klik hier voor meer info over ons!</a>
+      </aside>
+
+      <!-- Hoofdcontent -->
+      <div class="container" id="services">
+        <div class="gallery">
+
+          <div class="blok">
+            <div class="text">
+              <h2 data-i18n="s1_title">Knippen & Style</h2>
+              <p data-i18n="s1_text">
+                Modern, klassiek of skin fade — wij fixen ’t netjes met advies op maat en premium styling.
+              </p>
+              <a class="btn-primary" href="#booking" data-i18n="cta_book">Boek nu</a>
+            </div>
+            <img class="blok" src="images/bild4.png" alt="Knippen in de stoel">
+          </div>
+
+          <div class="blok">
+            <div class="text">
+              <h2 data-i18n="s2_title">Baard & Contouren</h2>
+              <p data-i18n="s2_text">
+                Strakke lijnen, verzorgde lengte en aftercare olie of balsem—precies zoals jij ’t wilt.
+              </p>
+            </div>
+            <img class="blok" src="images/bild3.png" alt="Baard trim en contouren">
+          </div>
+
+          <div class="blok">
+            <div class="text">
+              <h2 data-i18n="s3_title">Hot Towel Shave</h2>
+              <p data-i18n="s3_text">
+                Ontspan met warme doek en traditioneel mes. Rustig, precies, en glad resultaat.
+              </p>
+            </div>
+            <img class="blok" src="images/bild2.png" alt="Hot towel shave ritueel">
+          </div>
+
+          <div class="blok">
+            <div class="text">
+              <h2 data-i18n="s4_title">Hygiëne & Kwaliteit</h2>
+              <p data-i18n="s4_text">
+                Schone tools, aandacht voor detail en constante kwaliteit. Jij zit lekker; wij doen de rest.
+              </p>
+              <a class="btn-outline" href="#prices" data-i18n="cta_prices">Bekijk prijzen</a>
+            </div>
+            <img class="blok" src="images/bild1.png" alt="Tools en hygiëne">
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Korte pitch / callout -->
+    <div class="container2" id="contact">
+      <h1 data-i18n="pitch_title">Op zoek naar een frisse look?</h1>
+      <p data-i18n="pitch_sub">Kom langs bij Elegant Barbershop in ’s-Hertogenbosch.</p>
+      <p data-i18n="pitch_body">
+        Prijslijst (vanaf): Knippen €28 • Skin Fade €32 • Baard €18 • Hot Towel Shave €25 • Combi €42.
+      </p>
+    </div>
+
+    <!-- Simple booking anchor -->
+    <div class="container2" id="booking">
+      <h2 data-i18n="booking_title">Snel boeken</h2>
+      <p>
+        <a class="btn-primary" href="https://wa.me/31731234567" target="_blank" rel="noopener" data-i18n="booking_whatsapp">WhatsApp</a>
+        &nbsp;&nbsp;
+        <a class="btn-outline" href="tel:+3187139182" data-i18n="booking_call">Bel +3187139182 (0687139182)</a>
+      </p>
+    </div>
+
+    <!-- Locatie -->
+    <div class="container2" id="location">
+      <h2 data-i18n="loc_title">Je vindt ons hier</h2>
+      <p>Hinthamerstraat 138, 5211 MT ’s-Hertogenbosch</p>
+      <div style="max-width:1000px;margin:10px auto 0;">
+        <iframe
+          title="Elegant Barbershop locatie"
+          loading="lazy"
+          style="width:100%;height:420px;border:0;border-radius:12px"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Hinthamerstraat%20138,%205211%20MT%20's-Hertogenbosch&output=embed">
+        </iframe>
+      </div>
+    </div>
+
+    <footer class="main-footer">
+      <p>
+        <a href="#" data-i18n="footer_privacy">Privacy</a> -
+        <a href="#" data-i18n="footer_terms">Voorwaarden</a>
+      </p>
+      <p><span data-i18n="footer_copy">©</span> <span id="year"></span> Elegant Barbershop</p>
+    </footer>
+  </div>
+
+  <!-- i18n SCRIPT – leest ?lang=nl|en|pl|ar of valt terug op NL -->
+  <script>
+    const I18N = {
+      nl: {
+        hero_title: "Knap kapsel, chill vibe.",
+        nav_home: "Home",
+        nav_services: "Diensten",
+        nav_gallery: "Galerij",
+        nav_contact: "Info",          /* AANGEPAST */
+
+        notice_intro: "Let op onze openingstijden",
+        notice_more: "Klik hier voor meer info over ons!",
+
+        d_mon: "Maandag",   h_mon: "12:00–18:00",
+        d_tue: "Dinsdag",   h_tue: "09:00–18:00",
+        d_wed: "Woensdag",  h_wed: "09:00–18:00",
+        d_thu: "Donderdag", h_thu: "09:00–18:00",
+        d_fri: "Vrijdag",   h_fri: "09:00–18:00",
+        d_sat: "Zaterdag",  h_sat: "09:00–18:00",
+        d_sun: "Zondag",    h_sun: "Gesloten",
+
+        s1_title: "Knippen & Style",
+        s1_text: "Modern, klassiek of skin fade — wij fixen ’t netjes met advies op maat en premium styling.",
+        s2_title: "Baard & Contouren",
+        s2_text: "Strakke lijnen, verzorgde lengte en aftercare olie of balsem—precies zoals jij ’t wilt.",
+        s3_title: "Hot Towel Shave",
+        s3_text: "Ontspan met warme doek en traditioneel mes. Rustig, precies, en glad resultaat.",
+        s4_title: "Hygiëne & Kwaliteit",
+        s4_text: "Schone tools, aandacht voor detail en constante kwaliteit. Jij zit lekker; wij doen de rest.",
+
+        cta_book: "Boek nu",
+        cta_prices: "Bekijk prijzen",
+
+        pitch_title: "Op zoek naar een frisse look?",
+        pitch_sub: "Kom langs bij Elegant Barbershop in ’s-Hertogenbosch.",
+        pitch_body: "Prijslijst (vanaf): Knippen €28 • Skin Fade €32 • Baard €18 • Hot Towel Shave €25 • Combi €42.",
+
+        booking_title: "Snel boeken",
+        booking_whatsapp: "WhatsApp",
+        booking_call: "Bel 073 123 4567",
+
+        loc_title: "Je vindt ons hier",
+
+        footer_privacy: "Privacy",
+        footer_terms: "Voorwaarden",
+        footer_copy: "©"
+      },
+
+      en: {
+        hero_title: "Clean cuts. Chill vibes.",
+        nav_home: "Home",
+        nav_services: "Services",
+        nav_gallery: "Gallery",
+        nav_contact: "Info",          /* UPDATED */
+
+        notice_intro: "Opening hours",
+        notice_more: "Click here for more info about us!",
+
+        d_mon: "Monday",    h_mon: "12:00–18:00",
+        d_tue: "Tuesday",   h_tue: "09:00–18:00",
+        d_wed: "Wednesday", h_wed: "09:00–18:00",
+        d_thu: "Thursday",  h_thu: "09:00–18:00",
+        d_fri: "Friday",    h_fri: "09:00–18:00",
+        d_sat: "Saturday",  h_sat: "09:00–18:00",
+        d_sun: "Sunday",    h_sun: "Closed",
+
+        s1_title: "Haircuts & Style",
+        s1_text: "Modern, classic or skin fade — tailored advice and premium styling.",
+        s2_title: "Beard & Contours",
+        s2_text: "Sharp lines, neat length and aftercare oil or balm—your way.",
+        s3_title: "Hot Towel Shave",
+        s3_text: "Unwind with warm towels and a traditional razor. Smooth, precise.",
+        s4_title: "Hygiene & Quality",
+        s4_text: "Clean tools, detail focus and consistent results. You relax, we got you.",
+
+        cta_book: "Book now",
+        cta_prices: "See prices",
+
+        pitch_title: "Need a fresh look?",
+        pitch_sub: "Visit Elegant Barbershop in ’s-Hertogenbosch.",
+        pitch_body: "Price list (from): Cut €28 • Skin Fade €32 • Beard €18 • Hot Towel Shave €25 • Combo €42.",
+
+        booking_title: "Quick booking",
+        booking_whatsapp: "WhatsApp",
+        booking_call: "Call 073 123 4567",
+
+        loc_title: "Find us here",
+
+        footer_privacy: "Privacy",
+        footer_terms: "Terms",
+        footer_copy: "©"
+      },
+
+      pl: {
+        hero_title: "Czyste cięcia. Spokojny klimat.",
+        nav_home: "Start",
+        nav_services: "Usługi",
+        nav_gallery: "Galeria",
+        nav_contact: "Informacje",    /* ZMIANA: albo “Info”, jak wolisz */
+
+        notice_intro: "Godziny otwarcia",
+        notice_more: "Kliknij po więcej informacji o nas!",
+
+        d_mon: "Poniedziałek",  h_mon: "12:00–18:00",
+        d_tue: "Wtorek",        h_tue: "09:00–18:00",
+        d_wed: "Środa",         h_wed: "09:00–18:00",
+        d_thu: "Czwartek",      h_thu: "09:00–18:00",
+        d_fri: "Piątek",        h_fri: "09:00–18:00",
+        d_sat: "Sobota",        h_sat: "09:00–18:00",
+        d_sun: "Niedziela",     h_sun: "Zamknięte",
+
+        s1_title: "Strzyżenie & Styl",
+        s1_text: "Nowocześnie, klasycznie lub skin fade — doradztwo i stylizacja premium.",
+        s2_title: "Broda & Kontury",
+        s2_text: "Czyste linie, odpowiednia długość i pielęgnacja olejkiem lub balsamem.",
+        s3_title: "Hot Towel Shave",
+        s3_text: "Relaks z ciepłym ręcznikiem i tradycyjną brzytwą. Gładko i dokładnie.",
+        s4_title: "Higiena & Jakość",
+        s4_text: "Czyste narzędzia, dbałość o detale i stała jakość.",
+
+        cta_book: "Zarezerwuj",
+        cta_prices: "Cennik",
+
+        pitch_title: "Potrzebujesz świeżego looku?",
+        pitch_sub: "Zapraszamy do Elegant Barbershop w ’s-Hertogenbosch.",
+        pitch_body: "Ceny od: Strzyżenie €28 • Skin Fade €32 • Broda €18 • Hot Towel Shave €25 • Zestaw €42.",
+
+        booking_title: "Szybka rezerwacja",
+        booking_whatsapp: "WhatsApp",
+        booking_call: "Zadzwoń 073 123 4567",
+
+        loc_title: "Tu nas znajdziesz",
+
+        footer_privacy: "Prywatność",
+        footer_terms: "Regulamin",
+        footer_copy: "©"
+      },
+
+      ar: {
+        hero_title: "ستايل نظيف. أجواء هادئة.",
+        nav_home: "الرئيسية",
+        nav_services: "الخدمات",
+        nav_gallery: "المعرض",
+        nav_contact: "معلومات",       /* مُعدّل */
+
+        notice_intro: "مواعيد العمل",
+        notice_more: "اضغط هنا لمزيد من المعلومات عنا!",
+
+        d_mon: "الاثنين",   h_mon: "12:00–18:00",
+        d_tue: "الثلاثاء",  h_tue: "09:00–18:00",
+        d_wed: "الأربعاء",  h_wed: "09:00–18:00",
+        d_thu: "الخميس",    h_thu: "09:00–18:00",
+        d_fri: "الجمعة",    h_fri: "09:00–18:00",
+        d_sat: "السبت",     h_sat: "09:00–18:00",
+        d_sun: "الأحد",     h_sun: "مغلق",
+
+        s1_title: "قصّات وشَكل",
+        s1_text: "حديث، كلاسيك أو Skin Fade — نصيحة على مزاجك وستايلينغ ممتاز.",
+        s2_title: "اللحية والكونتور",
+        s2_text: "خطوط مرتبة، طول مضبوط وعناية بزيت/بلسم — على كيفك.",
+        s3_title: "حلاقة بالمنشفة الساخنة",
+        s3_text: "استرخاء بمنشفة دافئة وموس تقليدي. سلاسة ودقة.",
+        s4_title: "نظافة وجودة",
+        s4_text: "أدوات نظيفة، اهتمام بالتفاصيل ونتيجة ثابتة. ريّح بالك، وإحنا نضبطها.",
+
+        cta_book: "احجز الآن",
+        cta_prices: "شاهد الأسعار",
+
+        pitch_title: "تبي لوك جديد؟",
+        pitch_sub: "تعال Elegant Barbershop في دن بوش.",
+        pitch_body: "الأسعار (ابتداءً من): قصّة €28 • Skin Fade €32 • لحية €18 • Hot Towel €25 • باكيدج €42.",
+
+        booking_title: "حجز سريع",
+        booking_whatsapp: "واتساب",
+        booking_call: "اتصل 073 123 4567",
+
+        loc_title: "تلاقينا هنا",
+
+        footer_privacy: "الخصوصية",
+        footer_terms: "الشروط",
+        footer_copy: "©"
+      }
+    };
+
+    // helpers
+    const byQS = (sel, root=document) => root.querySelector(sel);
+    const byQSA = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+    // taal bepalen: ?lang=xx of select
+    const params = new URLSearchParams(location.search);
+    const defaultLang = "nl";
+    let current = (params.get("lang") || localStorage.getItem("lang") || defaultLang).toLowerCase();
+    if(!I18N[current]) current = defaultLang;
+
+    const langSelect = byQS("#lang");
+    langSelect.value = current;
+
+    // dir/lang op <html> zetten + titel
+    function applyDirLang(lang){
+      const html = document.documentElement;
+      html.setAttribute("lang", lang);
+      html.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
+      document.title = (lang==="nl" ? "Elegant Barbershop | Den Bosch"
+        : lang==="en" ? "Elegant Barbershop | Den Bosch"
+        : lang==="pl" ? "Elegant Barbershop | Den Bosch"
+        : "إيليغِنت باربرز | دن بوش");
+    }
+
+    function applyTranslations(lang){
+      const dict = I18N[lang];
+      byQSA("[data-i18n]").forEach(el=>{
+        const key = el.getAttribute("data-i18n");
+        if(dict[key] !== undefined) el.innerHTML = dict[key];
+      });
+    }
+
+    function setLang(lang, pushURL=true){
+      if(!I18N[lang]) return;
+      current = lang;
+      applyDirLang(lang);
+      applyTranslations(lang);
+      localStorage.setItem("lang", lang);
+      if(pushURL){
+        const p = new URL(location.href);
+        p.searchParams.set("lang", lang);
+        history.replaceState(null, "", p.toString());
+      }
+    }
+
+    langSelect.addEventListener("change", e => setLang(e.target.value));
+    setLang(current, false);
+
+    // jaar in footer
+    const y = document.getElementById("year");
+    if (y) y.textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

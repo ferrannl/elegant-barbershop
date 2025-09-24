@@ -1,0 +1,250 @@
+/* -------------------------------------------------------
+   Elegant Barbershop – style.css
+   Vibe: clean, chill, rood/wit/blauw (NL)
+   Werkt met je bestaande HTML-structuur (parallax/header/menu/etc.)
+   Inclusief RTL-support via [dir="rtl"]
+-------------------------------------------------------- */
+
+/* ========== Variabelen & reset ========== */
+:root{
+  --nl-red: #d21f2b;
+  --nl-blue: #1f3ea6;
+  --ink: #0f1222;
+  --bg: #f6f8ff;
+  --muted: #e5e8f4;
+  --panel: #ffffff;
+  --radius: 14px;
+  --shadow: 0 14px 40px rgba(0,0,0,.08);
+  --container: 1100px;
+  --focus: 0 0 0 3px rgba(31,62,166,.25);
+  --font: ui-sans-serif, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans";
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img{max-width:100%; display:block}
+a{color:inherit; text-decoration:none}
+a:focus{outline:none; box-shadow: var(--focus)}
+button{font:inherit}
+
+/* Helpers */
+.container{width:min(100% - 2rem, var(--container)); margin-inline:auto}
+.container2{width:min(100% - 2rem, var(--container)); margin:40px auto; text-align:center}
+.sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+
+/* ========== Parallax / Hero ========== */
+.parallax{
+  position:relative;
+  min-height: 64vh;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding: 40px 0 60px;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.25)),
+    /* Zet hier je eigen hero-foto neer */
+    url("images/hero.jpg") center/cover no-repeat;
+  color:#fff;
+  isolation:isolate;
+}
+.parallax img{
+  width: 160px; height:auto; filter: drop-shadow(0 10px 30px rgba(0,0,0,.35));
+  margin-bottom: 10px;
+}
+.parallax h1{margin: 0; font-size: clamp(28px, 5vw, 56px); line-height:1.1}
+.parallax h1 hr{
+  border:0; border-top:4px solid var(--nl-red);
+  width:140px; margin:0 auto 10px;
+}
+
+/* Taal switcher */
+.lang-switch{position:absolute; top:14px; right:14px; z-index:10}
+[dir="rtl"] .lang-switch{right:auto; left:14px}
+.lang-switch select{
+  background:#fff; border:1px solid var(--muted); border-radius:12px; padding:8px 12px; cursor:pointer;
+}
+
+/* ========== Header / Navigatie ========== */
+.header{
+  background: #ffffff;
+  border-bottom: 1px solid var(--muted);
+  position: sticky; top:0; z-index:40;
+}
+.header .logo img{height:48px; width:auto}
+.header .header-inner{display:flex; align-items:center; justify-content:space-between}
+
+.header .logo{
+  padding: 10px 12px; display:inline-block;
+}
+
+nav{position:relative}
+.menu-handle{
+  display:none; cursor:pointer; padding: 12px; border-radius: 10px;
+}
+.menu{
+  list-style:none; margin:0; padding:0;
+  display:flex; align-items:center; gap:18px;
+}
+.menu > li > a, .menu > li > span{
+  display:inline-block; padding: 12px 10px; border-radius: 10px;
+}
+.menu > li > a:hover, .menu > li > span:hover{background:#f5f6ff}
+
+.submenu{
+  list-style:none; margin:0; padding:8px 0;
+  position:absolute; display:none; min-width: 200px;
+  background:#fff; border:1px solid var(--muted); border-radius:12px; box-shadow: var(--shadow);
+}
+.menu > li{position:relative}
+.menu > li:hover > .submenu{display:block}
+.submenu li a{
+  display:block; padding:10px 14px;
+}
+.submenu li a:hover{background:#f6f8ff}
+
+/* Mobile nav via checkbox */
+#check{display:none}
+@media (max-width: 900px){
+  .menu-handle{display:inline-block}
+  .menu{
+    position:absolute; inset: 60px 0 auto 0;
+    background:#fff; border-bottom:1px solid var(--muted);
+    display:none; flex-direction:column; align-items:flex-start; gap:0; padding:8px;
+  }
+  #check:checked ~ .menu{display:flex}
+  .menu > li > a, .menu > li > span{padding: 12px 14px; width:100%}
+  .submenu{position:static; display:block; border:0; box-shadow:none; padding:0; min-width:unset}
+  .submenu li a{padding:10px 18px}
+}
+
+/* RTL nav */
+[dir="rtl"] .menu, [dir="rtl"] .submenu{direction: rtl; text-align:right}
+
+/* ========== Buttons ========== */
+.btn-primary{
+  background: var(--nl-red);
+  color:#fff; padding: 10px 16px; border-radius: 999px;
+  border:2px solid transparent; display:inline-block; font-weight:700;
+}
+.btn-primary:hover{filter: brightness(.96)}
+.btn-outline{
+  border:2px solid var(--nl-blue); color: var(--nl-blue);
+  padding: 8px 14px; border-radius:999px; display:inline-block; font-weight:700; background:#fff;
+}
+.btn-outline:hover{background: rgba(31,62,166,.06)}
+
+/* ========== Layout secties ========== */
+.wrapper{background: transparent}
+.info{
+  width:min(100% - 2rem, 340px);
+  margin: 24px auto;
+  background: var(--panel);
+  border:1px solid var(--muted);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 12px;
+}
+.info img{border-radius: 10px; margin-bottom: 10px}
+.elementor-widget-container{font-size: .98rem}
+.notice-card{
+  background: linear-gradient(180deg,#fff,#fafbff);
+  border:1px solid var(--muted); border-radius: 12px; padding: 12px;
+}
+
+/* ========== Gallery / Diensten blokken ========== */
+.gallery{display:grid; gap: 18px}
+.blok{
+  background:#fff; border:1px solid var(--muted);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow:hidden; padding: 0;
+}
+
+/* Binnenkant blok: tekst + foto naast elkaar */
+.blok .text{
+  padding: 18px;
+}
+.gallery .blok{
+  display:flex; align-items:center; gap: 16px;
+}
+.gallery .blok img.blok{
+  width: 50%; height: auto; object-fit: cover; border-radius: 0;
+}
+.gallery .blok .text{width: 50%}
+
+/* Om en om foto/tekst wisselen voor rhythm */
+.gallery .blok:nth-child(odd){flex-direction: row-reverse}
+
+/* Koppen */
+.blok h2{margin: 6px 0 8px; font-size: clamp(20px, 2.4vw, 28px)}
+.blok p{margin: 0 0 12px}
+
+/* Responsive */
+@media (max-width: 980px){
+  .gallery .blok{flex-direction:column}
+  .gallery .blok img.blok, .gallery .blok .text{width:100%}
+}
+
+/* ========== Pitch / prijzen teaser ========== */
+.container2 h1, .container2 h2{margin:0 0 8px}
+.container2 p{margin:8px 0}
+#prices{
+  background: linear-gradient(90deg, rgba(210,31,43,.06), rgba(31,62,166,.06));
+  border:1px solid var(--muted); border-radius: var(--radius);
+  padding: 18px;
+}
+
+/* ========== Map embed ========== */
+#location iframe{border:0}
+
+/* ========== Footer ========== */
+.main-footer{
+  margin-top: 40px;
+  background: #0c1028;
+  color: #dbe0ff;
+  text-align:center;
+  padding: 16px 10px;
+  border-top: 4px solid var(--nl-blue);
+}
+.main-footer a{color:#e7ecff}
+.main-footer p{margin:8px 0}
+
+/* ========== Form/inputs (voor eventuele forms op contact) ========== */
+input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="time"], select, textarea{
+  width:100%; padding:12px 14px; border-radius:12px; border:1px solid #cfd3ea; background:#fff; font:inherit;
+}
+input:focus, select:focus, textarea:focus{outline:none; box-shadow: var(--focus); border-color: var(--nl-blue)}
+
+/* ========== Kleine accenten ========== */
+.flag-strip{height:10px; background: linear-gradient(90deg, var(--nl-red) 0 33.33%, #fff 33.33% 66.66%, var(--nl-blue) 66.66% 100%)}
+.badge{
+  display:inline-block; padding:4px 8px; border-radius:999px; font-weight:700;
+  background:rgba(31,62,166,.08); color:var(--nl-blue); border:1px solid var(--muted)
+}
+
+/* ========== RTL verbeteringen ========== */
+[dir="rtl"] body{direction: rtl}
+[dir="rtl"] .gallery .blok:nth-child(odd){flex-direction: column} /* op mobiel gelijk */
+[dir="rtl"] .gallery .blok{flex-direction: row} /* standaard tekst links, foto rechts in RTL */
+@media (max-width:980px){
+  [dir="rtl"] .gallery .blok{flex-direction: column}
+}
+
+/* ========== Print (simpel) ========== */
+@media print{
+  .lang-switch, .menu-handle, #check, .submenu{display:none !important}
+  .menu{gap:8px}
+  .parallax{min-height:auto; background:none; color:#000}
+  .parallax img{display:none}
+  .parallax h1 hr{border-top-color:#000}
+  .main-footer{border:0; color:#000; background:#fff}
+}

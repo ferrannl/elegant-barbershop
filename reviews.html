@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reviews | Elegant Barbershop</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Lightweight styling voor review cards */
+    .reviews-hero{
+      min-height: 38vh; display:grid; place-items:center; text-align:center; color:#fff;
+      background:
+        linear-gradient(180deg, rgba(10,12,18,.45), rgba(10,12,18,.30)),
+        url("images/hero-reviews.jpg") center/cover no-repeat;
+      padding: 40px 12px;
+    }
+    .reviews-hero h1{ margin:0; font-size: clamp(28px, 5vw, 52px) }
+    .reviews-wrap{ width:min(100% - 2rem, 1100px); margin: 24px auto 40px }
+    .reviews-toolbar{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; justify-content:space-between; margin-bottom:12px }
+    .reviews-count{ opacity:.8 }
+    .reviews-grid{ display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:12px }
+    @media (max-width: 980px){ .reviews-grid{ grid-template-columns:1fr 1fr } }
+    @media (max-width: 640px){ .reviews-grid{ grid-template-columns:1fr } }
+
+    .review-card{
+      background:#fff; border:1px solid #e5e8f4; border-radius:14px; box-shadow: 0 14px 40px rgba(0,0,0,.06);
+      padding:14px; display:flex; gap:12px; align-items:flex-start;
+    }
+    .review-avatar{
+      width:46px; height:46px; border-radius:50%; object-fit:cover; flex:0 0 auto; border:1px solid #e5e8f4;
+    }
+    .review-body{ flex:1 1 auto }
+    .review-head{ display:flex; align-items:center; gap:8px; flex-wrap:wrap }
+    .review-author{ font-weight:700 }
+    .review-stars{ letter-spacing:2px; }
+    .review-text{ margin:6px 0 8px; white-space:pre-wrap }
+    .review-meta{ font-size:.9rem; opacity:.7 }
+    .stars-outer{ position:relative; display:inline-block; width: 100px; height: 18px; background: linear-gradient(90deg,#ddd 0 100%) }
+    .stars-inner{ position:absolute; top:0; left:0; height:100%; background: linear-gradient(90deg, #f8b84a 0 100%) }
+    .powered-by{ display:flex; align-items:center; gap:8px; opacity:.7; font-size:.9rem }
+    .filter-row{ display:flex; gap:8px; flex-wrap:wrap }
+    .reviews-empty{ text-align:center; padding:32px 12px; opacity:.7 }
+    .btn, .btn-ghost{
+      display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; text-decoration:none; border:2px solid transparent;
+    }
+    .btn{ background: var(--nl-red, #d21f2b); color:#fff }
+    .btn-ghost{ border-color:#e5e8f4; background:#fff }
+    .badge{ padding:2px 8px; border-radius:999px; border:1px solid #e5e8f4; }
+  </style>
+</head>
+<body>
+  <!-- Parallax hero (houd je bestaande classes) -->
+  <div class="parallax" id="hero">
+    <div class="lang-switch">
+      <label for="lang" class="sr-only">Language</label>
+      <select id="lang" aria-label="Language">
+        <option value="nl">Nederlands</option>
+        <option value="en">English</option>
+        <option value="pl">Polski</option>
+        <option value="ar">العربية</option>
+      </select>
+    </div>
+
+    <img src="images/logo-min.png" alt="Elegant Barbershop logo">
+    <h1>
+      <hr>
+      <span data-i18n="hero_title">Knap kapsel, chill vibe.</span>
+    </h1>
+  </div>
+
+  <div class="wrapper">
+    <header class="header">
+      <div class="logo">
+        <a href="index.html"><img src="images/logo-min.png" alt="Elegant Barbershop logo"></a>
+      </div>
+
+      <nav>
+        <input id="check" type="checkbox">
+        <label for="check" class="menu-handle"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></label>
+
+        <!-- Menu: beknopt gehouden -->
+        <ul class="menu">
+          <li><a href="#hero" data-i18n="nav_home">Home</a></li>
+          <li><a href="#services" data-i18n="nav_services">Diensten</a></li>
+          <li><a href="#gallery" data-i18n="nav_gallery">Galerij</a></li>
+          <li><span data-i18n="nav_contact">Contact</span>
+            <ul class="submenu">
+              <li><a href="#booking" data-i18n="nav_book">Boeken</a></li>
+              <li><a href="#location" data-i18n="nav_location">Locatie</a></li>
+            </ul>
+          </li>
+          <li><a href="reviews.html">Reviews</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+  <div class="reviews-hero">
+    <div>
+      <h1>Google-reviews</h1>
+      <p class="badge">Live vanuit je Google-vermelding</p>
+    </div>
+  </div>
+
+  <main class="reviews-wrap">
+    <div class="reviews-toolbar">
+      <div class="filter-row">
+        <select id="sort" aria-label="Sorteer">
+          <option value="newest">Nieuwste eerst</option>
+          <option value="highest">Hoogste beoordeling</option>
+          <option value="lowest">Laagste beoordeling</option>
+          <option value="withtext">Alleen met tekst</option>
+        </select>
+        <select id="stars" aria-label="Filter op sterren">
+          <option value="all">Alle sterren</option>
+          <option value="5">5 sterren</option>
+          <option value="4">4+ sterren</option>
+          <option value="3">3+ sterren</option>
+        </select>
+      </div>
+
+      <div class="powered-by">
+        <img src="https://developers.google.com/static/maps/images/google_maps_badge.svg" alt="Google" height="20">
+        <span>Reviews via Google Places</span>
+      </div>
+    </div>
+
+    <div id="reviewsCount" class="reviews-count"></div>
+    <section id="reviews" class="reviews-grid" aria-live="polite"></section>
+    <div id="empty" class="reviews-empty" hidden>Er zijn (nog) geen reviews om te tonen.</div>
+
+    <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap">
+      <a id="writeLink" class="btn" target="_blank" rel="noopener">Schrijf een review</a>
+      <a id="mapsLink" class="btn-ghost" target="_blank" rel="noopener">Bekijk op Google Maps</a>
+    </div>
+  </main>
+
+  <!-- Google Places JS (v3 loader) -->
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&loading=async">
+  </script>
+
+  <script>
+  (function(){
+    const PLACE_ID = "ChIJqZ0zNwDvxkcRTj4JE25BbxA"; // bv. "ChIJqZ0zNwDvxkcRTj4JE25BbxA "
+    const BUSINESS_NAME = "Elegant Barbershop";
+    const ADDRESS_SHORT = "Hinthamerstraat 138, ’s-Hertogenbosch";
+
+    // Links
+    const writeLink = document.getElementById('writeLink');
+    const mapsLink  = document.getElementById('mapsLink');
+    writeLink.href = `https://search.google.com/local/writereview?placeid=${PLACE_ID}`;
+    mapsLink.href  = `https://www.google.com/maps/place/?q=place_id:${PLACE_ID}`;
+
+    // UI refs
+    const listEl = document.getElementById('reviews');
+    const emptyEl = document.getElementById('empty');
+    const countEl = document.getElementById('reviewsCount');
+    const sortEl  = document.getElementById('sort');
+    const starsEl = document.getElementById('stars');
+
+    let allReviews = [];
+
+    // Wachten tot Google Maps JS geladen is
+    window.initPlaces = async function(){
+      // niet gebruikt in v3 loader, maar fallback
+    };
+
+    function loadPlaceDetails(){
+      const service = new google.maps.places.PlacesService(document.createElement('div'));
+      service.getDetails(
+        { placeId: PLACE_ID, fields: ['name','url','user_ratings_total','rating','reviews'] },
+        (place, status) => {
+          if (status !== google.maps.places.PlacesServiceStatus.OK || !place) {
+            showEmpty("Kon Google-reviews niet laden (controleer Place ID / API key).");
+            return;
+          }
+          allReviews = (place.reviews || []).map(r => ({
+            author: r.author_name,
+            profile: r.profile_photo_url,
+            rating: r.rating,
+            text: r.text || "",
+            time: r.time ? r.time * 1000 : Date.now(), // UNIX sec -> ms
+            relative: r.relative_time_description || "",
+            author_url: r.author_url || null
+          }));
+          render();
+          if (place.user_ratings_total) {
+            countEl.textContent = `${place.user_ratings_total} reviews (gemiddeld ${place.rating?.toFixed?.(1) ?? "-"}/5)`;
+          }
+        }
+      );
+    }
+
+    function starWidth(rating){ // 0..5 -> %
+      const pct = Math.max(0, Math.min(5, Number(rating || 0))) / 5 * 100;
+      return pct.toFixed(0) + '%';
+    }
+
+    function reviewCard(r){
+      const aStart = `<a href="${mapsLink.href}" target="_blank" rel="noopener" title="Open in Google Maps">`;
+      const aEnd = `</a>`;
+      return `
+        <article class="review-card">
+          <img class="review-avatar" src="${r.profile || 'images/avatar.png'}" alt="" loading="lazy">
+          <div class="review-body">
+            <div class="review-head">
+              <span class="review-author">${r.author || 'Gebruiker'}</span>
+              <span class="review-stars">
+                <span class="stars-outer"><span class="stars-inner" style="width:${starWidth(r.rating)}"></span></span>
+              </span>
+            </div>
+            ${r.text ? `<p class="review-text">${escapeHTML(r.text)}</p>` : ``}
+            <div class="review-meta">${r.relative || ''} — ${aStart}${BUSINESS_NAME}${aEnd}</div>
+          </div>
+        </article>
+      `;
+    }
+
+    function escapeHTML(s){
+      return (s||"").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+    }
+
+    function render(){
+      let rows = [...allReviews];
+
+      // filter
+      const sf = starsEl.value;
+      if (sf !== 'all') {
+        const min = Number(sf);
+        rows = rows.filter(r => Number(r.rating) >= min);
+      }
+      if (sortEl.value === 'withtext') {
+        rows = rows.filter(r => (r.text||"").trim().length > 0);
+      }
+
+      // sort
+      rows.sort((a,b) => {
+        switch (sortEl.value) {
+          case 'newest':  return b.time - a.time;
+          case 'highest': return (b.rating||0) - (a.rating||0);
+          case 'lowest':  return (a.rating||0) - (b.rating||0);
+          default:        return b.time - a.time;
+        }
+      });
+
+      listEl.innerHTML = rows.map(reviewCard).join('');
+      emptyEl.hidden = rows.length > 0;
+      listEl.hidden = rows.length === 0;
+    }
+
+    sortEl.addEventListener('change', render);
+    starsEl.addEventListener('change', render);
+
+    // start
+    if (window.google && google.maps && google.maps.places) {
+      loadPlaceDetails();
+    } else {
+      window.addEventListener('load', () => {
+        if (window.google && google.maps && google.maps.places) loadPlaceDetails();
+        else showEmpty("Google Places script kon niet worden geladen.");
+      });
+    }
+
+    function showEmpty(msg){
+      listEl.hidden = true;
+      emptyEl.hidden = false;
+      emptyEl.textContent = msg || "Er zijn (nog) geen reviews om te tonen.";
+    }
+  })();
+  </script>
+</body>
+</html>
