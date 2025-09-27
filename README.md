@@ -1,4 +1,4 @@
-![Company Logo](./images/logo-min.png "Elegant Barbershop Logo")
+![Company Logo](./logo-min.png "Elegant Barbershop Logo")
 
 # Elegant Barbershop Website
 
