@@ -22,10 +22,7 @@
 <body>
   <!-- HERO (mobile uses <img> cover; desktop uses fixed background) -->
   <section class="parallax" id="hero" aria-label="Elegant Barbershop">
-    <!-- mobile/tablet bg image -->
     <img class="hero-bg" src="hero.jpg" alt="" aria-hidden="true" />
-
-    <!-- overlay for gradient on mobile -->
     <div class="hero-overlay" aria-hidden="true"></div>
 
     <div class="lang-switch">
@@ -48,36 +45,16 @@
   </section>
 
   <div class="wrapper">
-    <!-- Sticky header -->
+    <!-- Minimal sticky header (menu removed) -->
     <header class="header">
       <div class="container header-inner">
         <div class="logo">
           <a href="#hero"><img src="logo-min.png" alt="Elegant Barbershop logo" /></a>
         </div>
-
-        <nav>
-          <input id="check" type="checkbox" />
-          <label for="check" class="menu-handle" aria-label="Open menu"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></label>
-
-          <!-- Mobile/Tablet menu panel -->
-          <ul class="menu">
-            <li><a href="#hero" data-i18n="nav_home">Home</a></li>
-            <li><a href="#services" data-i18n="nav_services">Diensten</a></li>
-            <li>
-              <a
-                href="https://www.google.com/maps/place/Elegant+Barbershop/@51.6885408,5.3109113,3a,75y,90t/data=!3m8!1e2!3m6!1sCIHM0ogKEICAgICvtoy7hQE!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FAC9h4npmxS4d_tYA8CvKB_uyUOCVISjcsjIyBbdLNqtvFh8GeinvyoP_CVqPiKOYu3unGvkXsaBV7MGU7AXwYjJrPEW15M3uQ2c__jCfE41nfTpgTqIm5U3bJkKcmZ0mkBEd-hfNGrVoVg%3Dw114-h86-k-no!7i4032!8i3024!4m7!3m6!1s0x47c6ef0037339da9:0x106f416e13093e4e!8m2!3d51.6886613!4d5.310933!10e5!16s%2Fg%2F11wth2zk5n?hl=nl&entry=ttu"
-                data-i18n="nav_gallery" target="_blank" rel="noopener">Galerij</a>
-            </li>
-            <li><a href="#contact" data-i18n="nav_contact">Info</a></li>
-          </ul>
-
-          <!-- Backdrop to close the menu on tap -->
-          <div class="backdrop" aria-hidden="true"></div>
-        </nav>
       </div>
     </header>
 
-    <!-- Modern Social CTA buttons -->
+    <!-- Modern Social CTA buttons (added Google link like the others) -->
     <section class="container social-cta" aria-label="Volg ons">
       <a class="cta ig" href="https://www.instagram.com/elegantdenbosch/" target="_blank" rel="noopener" aria-label="Instagram - Elegant Den Bosch">
         <i class="fa fa-instagram" aria-hidden="true"></i>
@@ -88,13 +65,22 @@
       </a>
 
       <a class="cta tiktok" href="https://www.tiktok.com/@elegent.barbershop" target="_blank" rel="noopener" aria-label="TikTok - elegent.barbershop">
-        <!-- TikTok SVG -->
         <svg viewBox="0 0 48 48" aria-hidden="true" class="tiktok-svg">
           <path d="M33.4 14.2a11 11 0 0 0 6.4 2.1v6.2a17.1 17.1 0 0 1-6.4-1.3v10.2c0 6.4-5.2 11.6-11.6 11.6S10.2 37.8 10.2 31.4 15.4 19.8 21.8 19.8c1.2 0 2.4.2 3.6.6v6.7a5.9 5.9 0 0 0-3.6-1.2c-3.2 0-5.7 2.6-5.7 5.7s2.5 5.7 5.7 5.7 5.7-2.5 5.7-5.7V6.5h6.2c.3 3.1 1.9 5.8 4.1 7.7z" fill="currentColor"/>
         </svg>
         <div class="cta-text">
           <strong>TikTok</strong>
           <span>@elegent.barbershop</span>
+        </div>
+      </a>
+
+      <!-- NEW: Google link (former "Galerij" moved here) -->
+      <a class="cta maps" href="https://maps.app.goo.gl/zJiSQnb4Q6wNUqCSA"
+         target="_blank" rel="noopener" aria-label="Google - Elegant Barbershop">
+        <i class="fa fa-google" aria-hidden="true"></i>
+        <div class="cta-text">
+          <strong>Google</strong>
+          <span>Route & foto’s</span>
         </div>
       </a>
     </section>
@@ -151,7 +137,7 @@
                 <p data-i18n="s1_text">
                   Modern, klassiek of skin fade — wij fixen ’t netjes met advies op maat en premium styling.
                 </p>
-                <a class="btn-primary" href="#booking" data-i18n="cta_book">Boek nu</a>
+                <a class="btn-primary" href="#booking" data-i18n="cta_book">Kom langs</a>
               </div>
             </article>
 
@@ -203,7 +189,7 @@
         </p>
       </section>
 
-      <!-- Booking -->
+      <!-- Kom langs -->
       <section class="container2" id="booking">
         <h2 data-i18n="booking_title">Snel boeken</h2>
         <p>
@@ -235,7 +221,6 @@
         <a href="#" data-i18n="footer_terms">Voorwaarden</a>
       </p>
 
-      <!-- Footer socials -->
       <div class="footer-socials" aria-label="Socials">
         <a href="https://www.instagram.com/elegantdenbosch/" target="_blank" rel="noopener" aria-label="Instagram">
           <i class="fa fa-instagram" aria-hidden="true"></i>
@@ -251,16 +236,11 @@
     </footer>
   </div>
 
-  <!-- i18n + menu closer + mobile parallax -->
+  <!-- i18n + tiny mobile parallax -->
   <script>
     const I18N = {
       nl: {
         hero_title: "Knap kapsel, chill vibe.",
-        nav_home: "Home",
-        nav_services: "Diensten",
-        nav_gallery: "Galerij",
-        nav_contact: "Info",
-
         notice_intro: "Let op onze openingstijden",
         notice_more: "Klik hier voor meer info over ons!",
 
@@ -281,7 +261,7 @@
         s4_title: "Hygiëne & Kwaliteit",
         s4_text: "Schone tools, aandacht voor detail en constante kwaliteit. Jij zit lekker; wij doen de rest.",
 
-        cta_book: "Boek nu",
+        cta_book: "Kom langs",
 
         pitch_title: "Op zoek naar een frisse look?",
         pitch_sub: "Kom langs bij Elegant Barbershop in ’s-Hertogenbosch.",
@@ -299,11 +279,6 @@
       },
       en: {
         hero_title: "Clean cuts. Chill vibes.",
-        nav_home: "Home",
-        nav_services: "Services",
-        nav_gallery: "Gallery",
-        nav_contact: "Info",
-
         notice_intro: "Opening hours",
         notice_more: "Click here for more info about us!",
 
@@ -324,7 +299,7 @@
         s4_title: "Hygiene & Quality",
         s4_text: "Clean tools, detail focus and consistent results. You relax, we got you.",
 
-        cta_book: "Book now",
+        cta_book: "Come by",
 
         pitch_title: "Need a fresh look?",
         pitch_sub: "Visit Elegant Barbershop in ’s-Hertogenbosch.",
@@ -342,11 +317,6 @@
       },
       pl: {
         hero_title: "Czyste cięcia. Spokojny klimat.",
-        nav_home: "Start",
-        nav_services: "Usługi",
-        nav_gallery: "Galeria",
-        nav_contact: "Informacje",
-
         notice_intro: "Godziny otwarcia",
         notice_more: "Kliknij po więcej informacji o nas!",
 
@@ -367,7 +337,7 @@
         s4_title: "Higiena & Jakość",
         s4_text: "Czyste narzędzia, dbałość o detale i stała jakość.",
 
-        cta_book: "Zarezerwuj",
+        cta_book: "Wpadnij",
 
         pitch_title: "Potrzebujesz świeżego looku?",
         pitch_sub: "Zapraszamy do Elegant Barbershop w ’s-Hertogenbosch.",
@@ -385,11 +355,6 @@
       },
       ar: {
         hero_title: "ستايل نظيف. أجواء هادئة.",
-        nav_home: "الرئيسية",
-        nav_services: "الخدمات",
-        nav_gallery: "المعرض",
-        nav_contact: "معلومات",
-
         notice_intro: "مواعيد العمل",
         notice_more: "اضغط هنا لمزيد من المعلومات عنا!",
 
@@ -410,7 +375,7 @@
         s4_title: "نظافة وجودة",
         s4_text: "أدوات نظيفة، اهتمام بالتفاصيل ونتيجة ثابتة. ريّح بالك، وإحنا نضبطها.",
 
-        cta_book: "احجز الآن",
+        cta_book: "مرّ علينا",
 
         pitch_title: "تبي لوك جديد؟",
         pitch_sub: "تعال Elegant Barbershop في دن بوش.",
@@ -476,58 +441,23 @@
     const y = document.getElementById("year");
     if (y) y.textContent = new Date().getFullYear();
 
-    /* ===== Menu auto-close + body scroll lock ===== */
-    const checkbox = document.getElementById('check');
-    const menu = document.querySelector('nav .menu');
-    const backdrop = document.querySelector('nav .backdrop');
-
-    function setScrollLock(on){
-      document.body.classList.toggle('no-scroll', !!on);
-    }
-    function closeMenu(){
-      if(checkbox){ checkbox.checked = false; }
-      setScrollLock(false);
-    }
-    function openMenu(){
-      setScrollLock(true);
-    }
-
-    if (checkbox){
-      checkbox.addEventListener('change', e => {
-        e.target.checked ? openMenu() : closeMenu();
-      });
-    }
-    if (menu){
-      menu.addEventListener('click', (e) => {
-        const a = e.target.closest('a');
-        if (a){ closeMenu(); }
-      });
-    }
-    if (backdrop){ backdrop.addEventListener('click', closeMenu); }
-    window.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') closeMenu(); });
-
-    /* ===== Mobile parallax (tiny, battery-friendly) ===== */
+    /* Tiny mobile parallax (optional, reduced-motion aware) */
     (function(){
       const img = document.querySelector('.hero-bg');
       if (!img) return;
-
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
       let ticking = false;
-
       function onScroll(){
-        if (reduce.matches) return; // respect user setting
+        if (reduce.matches) return;
         if (ticking) return;
         ticking = true;
         requestAnimationFrame(()=>{
-          // shift image a bit based on scroll; clamp to keep subtle
-          const y = window.scrollY || window.pageYOffset || 0;
-          const shift = Math.max(-40, Math.min(40, y * 0.15)); // px
+          const y = window.scrollY || 0;
+          const shift = Math.max(-40, Math.min(40, y * 0.15));
           img.style.setProperty('--heroParallax', shift + 'px');
           ticking = false;
         });
       }
-
-      // initialize
       img.style.transform = 'translateY(var(--heroParallax,0px))';
       window.addEventListener('scroll', onScroll, { passive: true });
     })();
