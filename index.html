@@ -20,8 +20,14 @@
 </head>
 
 <body>
-  <!-- HERO -->
-  <section class="parallax" id="hero" aria-label="Elegant Barbershop" data-hero="hero.jpg">
+  <!-- HERO (mobile uses <img> cover; desktop uses fixed background) -->
+  <section class="parallax" id="hero" aria-label="Elegant Barbershop">
+    <!-- mobile/tablet bg image -->
+    <img class="hero-bg" src="hero.jpg" alt="" aria-hidden="true" />
+
+    <!-- overlay for gradient on mobile -->
+    <div class="hero-overlay" aria-hidden="true"></div>
+
     <div class="lang-switch">
       <label for="lang" class="sr-only">Language</label>
       <select id="lang" aria-label="Language">
@@ -53,16 +59,20 @@
           <input id="check" type="checkbox" />
           <label for="check" class="menu-handle" aria-label="Open menu"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></label>
 
+          <!-- Mobile/Tablet menu panel -->
           <ul class="menu">
             <li><a href="#hero" data-i18n="nav_home">Home</a></li>
             <li><a href="#services" data-i18n="nav_services">Diensten</a></li>
             <li>
               <a
                 href="https://www.google.com/maps/place/Elegant+Barbershop/@51.6885408,5.3109113,3a,75y,90t/data=!3m8!1e2!3m6!1sCIHM0ogKEICAgICvtoy7hQE!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FAC9h4npmxS4d_tYA8CvKB_uyUOCVISjcsjIyBbdLNqtvFh8GeinvyoP_CVqPiKOYu3unGvkXsaBV7MGU7AXwYjJrPEW15M3uQ2c__jCfE41nfTpgTqIm5U3bJkKcmZ0mkBEd-hfNGrVoVg%3Dw114-h86-k-no!7i4032!8i3024!4m7!3m6!1s0x47c6ef0037339da9:0x106f416e13093e4e!8m2!3d51.6886613!4d5.310933!10e5!16s%2Fg%2F11wth2zk5n?hl=nl&entry=ttu"
-                data-i18n="nav_gallery">Galerij</a>
+                data-i18n="nav_gallery" target="_blank" rel="noopener">Galerij</a>
             </li>
             <li><a href="#contact" data-i18n="nav_contact">Info</a></li>
           </ul>
+
+          <!-- Backdrop to close the menu on tap -->
+          <div class="backdrop" aria-hidden="true"></div>
         </nav>
       </div>
     </header>
@@ -178,8 +188,6 @@
                 <p data-i18n="s4_text">
                   Schone tools, aandacht voor detail en constante kwaliteit. Jij zit lekker; wij doen de rest.
                 </p>
-                <!-- Prices button removed on purpose -->
-                <!-- <a class="btn-outline" href="#prices" data-i18n="cta_prices">Bekijk prijzen</a> -->
               </div>
             </article>
           </div>
@@ -243,7 +251,7 @@
     </footer>
   </div>
 
-  <!-- i18n -->
+  <!-- i18n + menu closer + mobile parallax -->
   <script>
     const I18N = {
       nl: {
@@ -467,6 +475,62 @@
     // jaar in footer
     const y = document.getElementById("year");
     if (y) y.textContent = new Date().getFullYear();
+
+    /* ===== Menu auto-close + body scroll lock ===== */
+    const checkbox = document.getElementById('check');
+    const menu = document.querySelector('nav .menu');
+    const backdrop = document.querySelector('nav .backdrop');
+
+    function setScrollLock(on){
+      document.body.classList.toggle('no-scroll', !!on);
+    }
+    function closeMenu(){
+      if(checkbox){ checkbox.checked = false; }
+      setScrollLock(false);
+    }
+    function openMenu(){
+      setScrollLock(true);
+    }
+
+    if (checkbox){
+      checkbox.addEventListener('change', e => {
+        e.target.checked ? openMenu() : closeMenu();
+      });
+    }
+    if (menu){
+      menu.addEventListener('click', (e) => {
+        const a = e.target.closest('a');
+        if (a){ closeMenu(); }
+      });
+    }
+    if (backdrop){ backdrop.addEventListener('click', closeMenu); }
+    window.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') closeMenu(); });
+
+    /* ===== Mobile parallax (tiny, battery-friendly) ===== */
+    (function(){
+      const img = document.querySelector('.hero-bg');
+      if (!img) return;
+
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let ticking = false;
+
+      function onScroll(){
+        if (reduce.matches) return; // respect user setting
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(()=>{
+          // shift image a bit based on scroll; clamp to keep subtle
+          const y = window.scrollY || window.pageYOffset || 0;
+          const shift = Math.max(-40, Math.min(40, y * 0.15)); // px
+          img.style.setProperty('--heroParallax', shift + 'px');
+          ticking = false;
+        });
+      }
+
+      // initialize
+      img.style.transform = 'translateY(var(--heroParallax,0px))';
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
   </script>
 </body>
 </html>
