@@ -1,4 +1,11 @@
-![Company Logo](./logo-min.png "Elegant Barbershop Logo")
+[![Elegant Barbershop – Click to visit](./logo-min.png "Elegant Barbershop Logo")](https://ferrannl.github.io/elegant-barbershop/)
+
+<p align="center">
+  <a href="https://ferrannl.github.io/elegant-barbershop/" title="Visit Elegant Barbershop website">
+    <img alt="Visit website: Elegant Barbershop" 
+         src="https://img.shields.io/badge/Visit%20website%20here-Elegant%20Barbershop-1f3ea6?style=for-the-badge">
+  </a>
+</p>
 
 # Elegant Barbershop Website
 
@@ -24,7 +31,7 @@ This website represents our barbershop in the heart of ’s-Hertogenbosch, provi
 We specialize in modern and classic haircuts, beard styling, skin fades, and traditional hot towel shaves.  
 Our mission is to create a chill vibe with professional service and high-quality care.  
 
-Visit the live site: [Elegant Barbershop](https://ferrannl.github.io/elegantbarbers/index.html)
+Visit the live site: [Elegant Barbershop](https://ferrannl.github.io/elegant-barbershop/)
 
 ---
 
