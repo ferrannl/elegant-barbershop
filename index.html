@@ -8,6 +8,13 @@
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
   <link rel="stylesheet" type="text/css" href="style.css" />
   <title>Elegant Barbershop | Den Bosch</title>
+
+  <!-- Social preview -->
+  <meta property="og:title" content="Elegant Barbershop | Den Bosch">
+  <meta property="og:description" content="Knap kapsel, chill vibe. Kom langs aan de Hinthamerstraat 138.">
+  <meta property="og:image" content="logo-min.png">
+  <meta property="og:url" content="https://example.com/">
+  <meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body>
@@ -42,7 +49,7 @@
 
         <nav>
           <input id="check" type="checkbox" />
-          <label for="check" class="menu-handle"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></label>
+          <label for="check" class="menu-handle" aria-label="Open menu"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></label>
 
           <ul class="menu">
             <li><a href="#hero" data-i18n="nav_home">Home</a></li>
@@ -59,6 +66,28 @@
         </nav>
       </div>
     </header>
+
+    <!-- Modern Social CTA buttons -->
+    <section class="container social-cta" aria-label="Volg ons">
+      <a class="cta ig" href="https://www.instagram.com/elegantdenbosch/" target="_blank" rel="noopener" aria-label="Instagram - Elegant Den Bosch">
+        <i class="fa fa-instagram" aria-hidden="true"></i>
+        <div class="cta-text">
+          <strong>Instagram</strong>
+          <span>@elegantdenbosch</span>
+        </div>
+      </a>
+
+      <a class="cta tiktok" href="https://www.tiktok.com/@elegent.barbershop" target="_blank" rel="noopener" aria-label="TikTok - elegent.barbershop">
+        <!-- Inline TikTok SVG (FA 4.7 has no TikTok icon) -->
+        <svg viewBox="0 0 48 48" aria-hidden="true" class="tiktok-svg">
+          <path d="M33.4 14.2a11 11 0 0 0 6.4 2.1v6.2a17.1 17.1 0 0 1-6.4-1.3v10.2c0 6.4-5.2 11.6-11.6 11.6S10.2 37.8 10.2 31.4 15.4 19.8 21.8 19.8c1.2 0 2.4.2 3.6.6v6.7a5.9 5.9 0 0 0-3.6-1.2c-3.2 0-5.7 2.6-5.7 5.7s2.5 5.7 5.7 5.7 5.7-2.5 5.7-5.7V6.5h6.2c.3 3.1 1.9 5.8 4.1 7.7z" fill="currentColor"/>
+        </svg>
+        <div class="cta-text">
+          <strong>TikTok</strong>
+          <span>@elegent.barbershop</span>
+        </div>
+      </a>
+    </section>
 
     <main>
       <div class="container">
@@ -188,6 +217,19 @@
         <a href="#" data-i18n="footer_privacy">Privacy</a> -
         <a href="#" data-i18n="footer_terms">Voorwaarden</a>
       </p>
+
+      <!-- Footer socials (only IG + TikTok) -->
+      <div class="footer-socials" aria-label="Socials">
+        <a href="https://www.instagram.com/elegantdenbosch/" target="_blank" rel="noopener" aria-label="Instagram">
+          <i class="fa fa-instagram" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.tiktok.com/@elegent.barbershop" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg viewBox="0 0 48 48" class="tiktok-svg" aria-hidden="true">
+            <path d="M33.4 14.2a11 11 0 0 0 6.4 2.1v6.2a17.1 17.1 0 0 1-6.4-1.3v10.2c0 6.4-5.2 11.6-11.6 11.6S10.2 37.8 10.2 31.4 15.4 19.8 21.8 19.8c1.2 0 2.4.2 3.6.6v6.7a5.9 5.9 0 0 0-3.6-1.2c-3.2 0-5.7 2.6-5.7 5.7s2.5 5.7 5.7 5.7 5.7-2.5 5.7-5.7V6.5h6.2c.3 3.1 1.9 5.8 4.1 7.7z" fill="currentColor"/>
+          </svg>
+        </a>
+      </div>
+
       <p><span data-i18n="footer_copy">©</span> <span id="year"></span> Elegant Barbershop</p>
     </footer>
   </div>

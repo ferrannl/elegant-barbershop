@@ -1,6 +1,7 @@
 /* -------------------------------------------------------
    Elegant Barbershop – style.css
    Full-page hero with parallax; ENTIRE image visible
+   + Modern Instagram & TikTok buttons
 -------------------------------------------------------- */
 
 /* ========== Variables & reset ========== */
@@ -15,7 +16,7 @@
   --shadow: 0 14px 40px rgba(0,0,0,.08);
   --container: 1100px;
   --focus: 0 0 0 3px rgba(31,62,166,.25);
-  --font: ui-sans-serif, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans";
+  --font: ui-sans-serif, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 }
 
 *{box-sizing:border-box}
@@ -40,10 +41,9 @@ button{font:inherit}
 .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
 
 /* ========== HERO / PARALLAX ========== */
-/* The ENTIRE image should be visible: use background-size: contain */
 .parallax{
   position:relative;
-  min-height: 140vh;                    /* taller so you can scroll to see all of it */
+  min-height: 140vh;
   display:grid;
   place-items:center;
   text-align:center;
@@ -59,7 +59,7 @@ button{font:inherit}
   background-position: center top, center top;
   background-size: cover, contain;      /* overlay covers; image stays fully visible */
   background-attachment: scroll, fixed; /* parallax effect on the image */
-  background-color: #fff;            /* behind letterboxing if any */
+  background-color: #fff;
 }
 
 /* iOS/Android fix: background-attachment fixed can be buggy */
@@ -84,7 +84,7 @@ button{font:inherit}
 
 /* ========== Header / Nav ========== */
 .header{
-  background: #ffffffcc;                 /* translucent so hero peeks through */
+  background: #ffffffcc;
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--muted);
@@ -136,6 +136,47 @@ nav{position:relative}
 /* RTL nav */
 [dir="rtl"] .menu, [dir="rtl"] .submenu{direction: rtl; text-align:right}
 
+/* ========== Modern Social CTA buttons ========== */
+.social-cta{
+  display:flex; gap:14px; align-items:stretch; margin:16px auto 6px; flex-wrap:wrap;
+}
+.social-cta .cta{
+  flex:1 1 320px; min-height:72px;
+  display:flex; align-items:center; gap:14px;
+  padding:14px 16px; border-radius:16px; border:1px solid var(--muted);
+  background:#fff; box-shadow: var(--shadow); transition: transform .12s ease, box-shadow .12s ease;
+}
+.social-cta .cta:hover{ transform: translateY(-2px); box-shadow: 0 18px 40px rgba(0,0,0,.10) }
+.social-cta .cta i, .tiktok-svg{ font-size:30px; width:30px; height:30px }
+.social-cta .cta .cta-text{ display:flex; flex-direction:column; line-height:1.15 }
+.social-cta .cta .cta-text strong{ font-size:1.05rem }
+.social-cta .cta .cta-text span{ font-size:.95rem; opacity:.85 }
+
+/* Instagram gradient ring effect */
+.social-cta .cta.ig{
+  position:relative;
+  border:0;
+  background:
+    linear-gradient(#fff,#fff) padding-box,
+    radial-gradient( circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 65%, #285AEB 90%) border-box;
+  border: 2px solid transparent;
+  color:#222;
+}
+.social-cta .cta.ig i{ color:#d6249f }
+
+/* TikTok neon edge on dark card */
+.social-cta .cta.tiktok{
+  color:#fff; border:0; background:#0d0f1c; position:relative;
+  box-shadow: 0 8px 28px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.06);
+}
+.social-cta .cta.tiktok:before, .social-cta .cta.tiktok:after{
+  content:""; position:absolute; inset:-2px; border-radius:16px; z-index:-1;
+  background: conic-gradient(from 180deg, #00f2ea, #ff0050, #00f2ea);
+  filter: blur(12px); opacity:.35;
+}
+.social-cta .cta.tiktok:after{ filter: blur(26px); opacity:.18 }
+.tiktok-svg{ display:block; color:#fff }
+
 /* ========== Buttons ========== */
 .btn-primary{
   background: var(--nl-red);
@@ -175,19 +216,13 @@ nav{position:relative}
   box-shadow: var(--shadow);
   overflow:hidden; padding: 0;
 }
-
-/* Binnenkant blok: tekst + foto naast elkaar */
 .blok .text{ padding: 18px; }
 .gallery .blok{ display:flex; align-items:center; gap: 16px; }
 .gallery .blok img.blok{
   width: 50%; height: auto; object-fit: cover; border-radius: 0;
 }
 .gallery .blok .text{ width: 50% }
-
-/* Om en om foto/tekst wisselen voor rhythm */
 .gallery .blok:nth-child(odd){flex-direction: row-reverse}
-
-/* Koppen */
 .blok h2{margin: 6px 0 8px; font-size: clamp(20px, 2.4vw, 28px)}
 .blok p{margin: 0 0 12px}
 
@@ -220,6 +255,15 @@ nav{position:relative}
 }
 .main-footer a{color:#e7ecff}
 .main-footer p{margin:8px 0}
+.footer-socials{
+  display:flex; justify-content:center; gap:14px; margin:8px 0 2px;
+}
+.footer-socials a{
+  display:inline-flex; width:40px; height:40px; border-radius:50%;
+  align-items:center; justify-content:center; background:#111533; color:#e7ecff; border:1px solid #2a2f55;
+}
+.footer-socials a:hover{filter:brightness(1.08)}
+.footer-socials .tiktok-svg{ width:18px; height:18px }
 
 /* ========== Form/inputs ========== */
 input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="time"], select, textarea{
@@ -236,8 +280,8 @@ input:focus, select:focus, textarea:focus{outline:none; box-shadow: var(--focus)
 
 /* ========== RTL verbeteringen ========== */
 [dir="rtl"] body{direction: rtl}
-[dir="rtl"] .gallery .blok:nth-child(odd){flex-direction: column} /* op mobiel gelijk */
-[dir="rtl"] .gallery .blok{flex-direction: row} /* standaard tekst links, foto rechts in RTL */
+[dir="rtl"] .gallery .blok:nth-child(odd){flex-direction: column}
+[dir="rtl"] .gallery .blok{flex-direction: row}
 @media (max-width:980px){
   [dir="rtl"] .gallery .blok{flex-direction: column}
 }
