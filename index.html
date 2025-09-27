@@ -54,7 +54,7 @@
       </div>
     </header>
 
-    <!-- Modern Social CTA buttons (added Google link like the others) -->
+    <!-- Social CTA buttons + Google link -->
     <section class="container social-cta" aria-label="Volg ons">
       <a class="cta ig" href="https://www.instagram.com/elegantdenbosch/" target="_blank" rel="noopener" aria-label="Instagram - Elegant Den Bosch">
         <i class="fa fa-instagram" aria-hidden="true"></i>
@@ -74,8 +74,8 @@
         </div>
       </a>
 
-      <!-- NEW: Google link (former "Galerij" moved here) -->
-      <a class="cta maps" href="https://maps.app.goo.gl/zJiSQnb4Q6wNUqCSA"
+      <!-- Google Maps CTA -->
+      <a class="cta maps" href="https://www.google.com/maps/place/Elegant+Barbershop/@51.6885408,5.3109113,15z/data=!4m15!1m8!3m7!1s0x47c6ef0037339da9:0x106f416e13093e4e!2sElegant+Barbershop!8m2!3d51.6886613!4d5.310933!10e5!16s%2Fg%2F11wth2zk5n!3m5!1s0x47c6ef0037339da9:0x106f416e13093e4e!8m2!3d51.6886613!4d5.310933!16s%2Fg%2F11wth2zk5n?hl=nl&entry=ttu&g_ep=EgoyMDI1MDkyNC4wIKXMDSoASAFQAw%3D%3D"
          target="_blank" rel="noopener" aria-label="Google - Elegant Barbershop">
         <i class="fa fa-google" aria-hidden="true"></i>
         <div class="cta-text">
@@ -229,6 +229,10 @@
           <svg viewBox="0 0 48 48" class="tiktok-svg" aria-hidden="true">
             <path d="M33.4 14.2a11 11 0 0 0 6.4 2.1v6.2a17.1 17.1 0 0 1-6.4-1.3v10.2c0 6.4-5.2 11.6-11.6 11.6S10.2 37.8 10.2 31.4 15.4 19.8 21.8 19.8c1.2 0 2.4.2 3.6.6v6.7a5.9 5.9 0 0 0-3.6-1.2c-3.2 0-5.7 2.6-5.7 5.7s2.5 5.7 5.7 5.7 5.7-2.5 5.7-5.7V6.5h6.2c.3 3.1 1.9 5.8 4.1 7.7z" fill="currentColor"/>
           </svg>
+        </a>
+        <a href="https://www.google.com/maps/place/Elegant+Barbershop/@51.6885408,5.3109113,15z/data=!4m15!1m8!3m7!1s0x47c6ef0037339da9:0x106f416e13093e4e!2sElegant+Barbershop!8m2!3d51.6886613!4d5.310933!10e5!16s%2Fg%2F11wth2zk5n!3m5!1s0x47c6ef0037339da9:0x106f416e13093e4e!8m2!3d51.6886613!4d5.310933!16s%2Fg%2F11wth2zk5n?hl=nl&entry=ttu&g_ep=EgoyMDI1MDkyNC4wIKXMDSoASAFQAw%3D%3D"
+           target="_blank" rel="noopener" aria-label="Google">
+          <i class="fa fa-google" aria-hidden="true"></i>
         </a>
       </div>
 
@@ -393,7 +397,6 @@
       }
     };
 
-    // helpers
     const $ = (sel, root=document) => root.querySelector(sel);
     const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
 

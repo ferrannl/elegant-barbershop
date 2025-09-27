@@ -1,284 +1,147 @@
 /* -------------------------------------------------------
    Elegant Barbershop – style.css
-   This build:
-   - Menu removed (kept minimal header w/ logo)
-   - Added Google CTA card next to Instagram/TikTok
-   - “Boek nu” -> “Kom langs” handled via i18n
-   - Mobile hero uses <img> (cover); desktop keeps fixed parallax
-   - Cards safe: no overlap, clean aspect ratios
+   Mobile whitespace in cards verminderd: compactere padding,
+   enkel top-margins tussen elementen, geen marge op laatste.
+   Overige styling ongewijzigd.
 -------------------------------------------------------- */
 
-/* ========== Variables & reset ========== */
 :root{
-  --nl-red: #d21f2b;
-  --nl-blue: #1f3ea6;
-  --ink: #0f1222;
-  --bg: #f6f8ff;
-  --muted: #e5e8f4;
-  --panel: #ffffff;
-  --radius: 14px;
-  --shadow: 0 14px 40px rgba(0,0,0,.08);
-  --container: 1100px;
-  --focus: 0 0 0 3px rgba(31,62,166,.25);
-  --font: ui-sans-serif, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-
-  --headerH: 64px;
+  --nl-red:#d21f2b; --nl-blue:#1f3ea6; --ink:#0f1222; --bg:#f6f8ff;
+  --muted:#e5e8f4; --panel:#ffffff; --radius:14px; --shadow:0 14px 40px rgba(0,0,0,.08);
+  --container:1100px; --focus:0 0 0 3px rgba(31,62,166,.25);
+  --font:ui-sans-serif,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  --headerH:64px;
 }
 
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;min-height:100%}
-body{
-  font-family: var(--font);
-  background: var(--bg);
-  color: var(--ink);
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 
-img{max-width:100%; height:auto; display:block}
-a{color:inherit; text-decoration:none}
-a:focus{outline:none; box-shadow: var(--focus)}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+a:focus{outline:none;box-shadow:var(--focus)}
 button{font:inherit}
 figure{margin:0}
 
-/* Helpers */
-.container{width:min(100% - 2rem, var(--container)); margin-inline:auto}
-.container2{width:min(100% - 2rem, var(--container)); margin:40px auto; text-align:center}
-.sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+.container{width:min(100% - 2rem, var(--container));margin-inline:auto}
+.container2{width:min(100% - 2rem, var(--container));margin:40px auto;text-align:center}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
-/* ========== HERO ========== */
-.parallax{
-  position: relative;
-  z-index: 0;
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  color: #fff;
-  padding: 40px 16px;
-  overflow: hidden;
-  background-color: #0a0a0a;
+/* HERO */
+.parallax{position:relative;z-index:0;min-height:100vh;display:grid;place-items:center;text-align:center;color:#fff;padding:40px 16px;overflow:hidden;background-color:#0a0a0a}
+@supports(height:100dvh){.parallax{min-height:100dvh}}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;will-change:transform;transform:translateY(var(--heroParallax,0px));z-index:0}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.30));z-index:0}
+@media (min-width:1025px){
+  .parallax{background-image:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.30)),url("hero.jpg");background-repeat:no-repeat,no-repeat;background-position:center center,center center;background-size:cover,cover;background-attachment:scroll,fixed}
+  .hero-bg,.hero-overlay{display:none}
 }
-@supports (height: 100dvh){
-  .parallax{ min-height: 100dvh; }
-}
+@media (max-height:540px){.parallax{padding-block:24px}}
+.hero-inner{position:relative;z-index:1}
+.hero-logo{width:clamp(120px,16vw,180px);height:auto;filter:drop-shadow(0 10px 30px rgba(0,0,0,.35));margin:0 auto 10px}
+.parallax h1{margin:0;font-size:clamp(28px,5vw,56px);line-height:1.1}
+.parallax h1 hr{border:0;border-top:4px solid var(--nl-red);width:140px;margin:0 auto 10px}
 
-/* mobile bg image fills section */
-.hero-bg{
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  will-change: transform;
-  transform: translateY(var(--heroParallax, 0px));
-  z-index: 0;
-}
+/* Language switcher */
+.lang-switch{position:absolute;top:14px;right:14px;z-index:5}
+[dir="rtl"] .lang-switch{right:auto;left:14px}
+.lang-switch select{background:#fff;border:1px solid var(--muted);border-radius:12px;padding:8px 12px;cursor:pointer}
 
-/* gradient overlay for contrast on mobile */
-.hero-overlay{
-  position:absolute;
-  inset:0;
-  background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.30));
-  z-index: 0;
-}
+/* Header (minimal) */
+.header{background:#ffffffcc;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border-bottom:1px solid var(--muted);position:sticky;top:0;z-index:40;height:var(--headerH)}
+.header .logo img{height:48px;width:auto}
+.header .header-inner{display:flex;align-items:center;justify-content:flex-start;gap:10px;padding:8px 0;height:100%}
 
-/* Desktop: switch to CSS background with fixed parallax */
-@media (min-width: 1025px){
-  .parallax{
-    background-image:
-      linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.30)),
-      url("hero.jpg");
-    background-repeat: no-repeat, no-repeat;
-    background-position: center center, center center;
-    background-size: cover, cover;
-    background-attachment: scroll, fixed;
+/* Social CTAs */
+.social-cta{display:flex;gap:14px;align-items:stretch;margin:16px auto 6px;flex-wrap:wrap}
+.social-cta .cta{flex:1 1 320px;min-height:72px;display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;border:1px solid var(--muted);background:#fff;box-shadow:var(--shadow);transition:transform .12s ease,box-shadow .12s ease}
+.social-cta .cta:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(0,0,0,.10)}
+.social-cta .cta i,.tiktok-svg{font-size:30px;width:30px;height:30px}
+.social-cta .cta .cta-text{display:flex;flex-direction:column;line-height:1.15}
+.social-cta .cta .cta-text strong{font-size:1.05rem}
+.social-cta .cta .cta-text span{font-size:.95rem;opacity:.85}
+.social-cta .cta.ig{position:relative;border:0;background:linear-gradient(#fff,#fff) padding-box,radial-gradient(circle at 30% 107%,#fdf497 0%,#fd5949 45%,#d6249f 65%,#285AEB 90%) border-box;border:2px solid transparent;color:#222}
+.social-cta .cta.ig i{color:#d6249f}
+.social-cta .cta.tiktok{color:#fff;border:0;background:#0d0f1c;position:relative;box-shadow:0 8px 28px rgba(0,0,0,.35),inset 0 0 0 1px rgba(255,255,255,.06)}
+.social-cta .cta.tiktok:before,.social-cta .cta.tiktok:after{content:"";position:absolute;inset:-2px;border-radius:16px;z-index:-1;background:conic-gradient(from 180deg,#00f2ea,#ff0050,#00f2ea);filter:blur(12px);opacity:.35}
+.social-cta .cta.tiktok:after{filter:blur(26px);opacity:.18}
+.tiktok-svg{display:block;color:#fff}
+.social-cta .cta.maps i{color:#4285F4}
+
+/* Buttons */
+.btn-primary{background:var(--nl-red);color:#fff;padding:10px 16px;border-radius:999px;border:2px solid transparent;display:inline-block;font-weight:700}
+.btn-primary:hover{filter:brightness(.96)}
+.btn-outline{border:2px solid var(--nl-blue);color:var(--nl-blue);padding:8px 14px;border-radius:999px;display:inline-block;font-weight:700;background:#fff}
+.btn-outline:hover{background:rgba(31,62,166,.06)}
+
+/* Layout sections */
+.wrapper{background:transparent}
+.info{width:min(100% - 2rem,340px);margin:24px auto;background:var(--panel);border:1px solid var(--muted);border-radius:var(--radius);box-shadow:var(--shadow);padding:12px}
+.info img{border-radius:10px;margin-bottom:10px}
+.elementor-widget-container{font-size:.98rem}
+.notice-card{background:linear-gradient(180deg,#fff,#fafbff);border:1px solid var(--muted);border-radius:12px;padding:12px}
+
+/* Gallery / Diensten */
+.gallery{display:grid;gap:18px}
+.card{position:relative;isolation:isolate;display:flex;align-items:stretch;gap:0;background:#fff;border:1px solid var(--muted);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.card .card-media,.card .text{flex:1 1 360px;min-width:0}
+.card .card-media{display:block;width:100%;aspect-ratio:16/10;overflow:hidden;background:#000}
+.card .card-media>img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+
+/* Default (desktop/tablet) text spacing */
+.card .text{padding:clamp(16px,2.2vw,22px);display:flex;flex-direction:column}
+.card h2{margin:6px 0 8px;font-size:clamp(20px,2.4vw,28px)}
+.card p{margin:0 0 12px;overflow-wrap:anywhere}
+.card:nth-child(odd){flex-direction:row-reverse}
+
+/* Tighten spacing specifically on mobile */
+@media (max-width:1100px){.card .card-media{aspect-ratio:4/3}}
+@media (max-width:980px){
+  .gallery{gap:12px}                                    /* kleinere ruimte tussen cards */
+  .card{flex-direction:column}
+  .card .card-media{aspect-ratio:4/3;background:transparent}
+  .card .card-media>img{width:100%;height:100%;object-fit:cover}
+
+  /* compacter en voorspelbaar: alleen top-margins tussen elementen */
+  .card .text{
+    padding:12px 14px 14px;                              /* minder padding onder */
   }
-  .hero-bg, .hero-overlay{ display:none; }
+  .card .text > *{margin:0}                              /* reset alle margins */
+  .card .text > * + *{margin-top:10px}                   /* alleen ruimte boven volgende */
+  .card .text > *:last-child{margin-bottom:0}            /* geen extra whitespace onderaan */
+
+  /* knop mag klein beetje ruimte boven krijgen */
+  .card .text .btn-primary{margin-top:6px}
 }
 
-/* Short viewports */
-@media (max-height: 540px){
-  .parallax{padding-block: 24px}
-}
-
-.hero-inner{position:relative; z-index:1}
-.hero-logo{width:clamp(120px, 16vw, 180px); height:auto; filter: drop-shadow(0 10px 30px rgba(0,0,0,.35)); margin: 0 auto 10px}
-.parallax h1{margin: 0; font-size: clamp(28px, 5vw, 56px); line-height:1.1}
-.parallax h1 hr{
-  border:0; border-top:4px solid var(--nl-red);
-  width:140px; margin:0 auto 10px;
-}
-
-/* Taal switcher */
-.lang-switch{position:absolute; top:14px; right:14px; z-index:5}
-[dir="rtl"] .lang-switch{right:auto; left:14px}
-.lang-switch select{
-  background:#fff; border:1px solid var(--muted); border-radius:12px; padding:8px 12px; cursor:pointer;
-}
-
-/* ========== Minimal Header (menu removed) ========== */
-.header{
-  background: #ffffffcc;
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid var(--muted);
-  position: sticky; top:0; z-index:40;
-  height: var(--headerH);
-}
-.header .logo img{height:48px; width:auto}
-.header .header-inner{display:flex; align-items:center; justify-content:flex-start; gap:10px; padding:8px 0; height:100%}
-
-/* ========== Social CTA buttons ========== */
-.social-cta{
-  display:flex; gap:14px; align-items:stretch; margin:16px auto 6px; flex-wrap:wrap;
-}
-.social-cta .cta{
-  flex:1 1 320px; min-height:72px;
-  display:flex; align-items:center; gap:14px;
-  padding:14px 16px; border-radius:16px; border:1px solid var(--muted);
-  background:#fff; box-shadow: var(--shadow); transition: transform .12s ease, box-shadow .12s ease;
-}
-.social-cta .cta:hover{ transform: translateY(-2px); box-shadow: 0 18px 40px rgba(0,0,0,.10) }
-.social-cta .cta i, .tiktok-svg{ font-size:30px; width:30px; height:30px }
-.social-cta .cta .cta-text{ display:flex; flex-direction:column; line-height:1.15 }
-.social-cta .cta .cta-text strong{ font-size:1.05rem }
-.social-cta .cta .cta-text span{ font-size:.95rem; opacity:.85 }
-
-/* Instagram gradient ring */
-.social-cta .cta.ig{
-  position:relative; border:0;
-  background:
-    linear-gradient(#fff,#fff) padding-box,
-    radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 65%, #285AEB 90%) border-box;
-  border: 2px solid transparent; color:#222;
-}
-.social-cta .cta.ig i{ color:#d6249f }
-
-/* TikTok neon edge */
-.social-cta .cta.tiktok{
-  color:#fff; border:0; background:#0d0f1c; position:relative;
-  box-shadow: 0 8px 28px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.06);
-}
-.social-cta .cta.tiktok:before, .social-cta .cta.tiktok:after{
-  content:""; position:absolute; inset:-2px; border-radius:16px; z-index:-1;
-  background: conic-gradient(from 180deg, #00f2ea, #ff0050, #00f2ea);
-  filter: blur(12px); opacity:.35;
-}
-.social-cta .cta.tiktok:after{ filter: blur(26px); opacity:.18 }
-.tiktok-svg{ display:block; color:#fff }
-
-/* Optional subtle Google styling */
-.social-cta .cta.maps i{ color:#4285F4 }
-
-/* ========== Buttons ========== */
-.btn-primary{
-  background: var(--nl-red);
-  color:#fff; padding: 10px 16px; border-radius: 999px;
-  border:2px solid transparent; display:inline-block; font-weight:700;
-}
-.btn-primary:hover{filter: brightness(.96)}
-.btn-outline{
-  border:2px solid var(--nl-blue); color: var(--nl-blue);
-  padding: 8px 14px; border-radius:999px; display:inline-block; font-weight:700; background:#fff;
-}
-.btn-outline:hover{background: rgba(31,62,166,.06)}
-
-/* ========== Layout sections ========== */
-.wrapper{background: transparent}
-.info{
-  width:min(100% - 2rem, 340px);
-  margin: 24px auto;
-  background: var(--panel);
-  border:1px solid var(--muted);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 12px;
-}
-.info img{border-radius: 10px; margin-bottom: 10px}
-.elementor-widget-container{font-size: .98rem}
-.notice-card{
-  background: linear-gradient(180deg,#fff,#fafbff);
-  border:1px solid var(--muted); border-radius: 12px; padding: 12px;
-}
-
-/* ========== Gallery / Diensten ========== */
-.gallery{display:grid; gap:18px}
-.card{
-  position: relative; isolation: isolate;
-  display:flex; align-items: stretch; gap:0;
-  background:#fff; border:1px solid var(--muted);
-  border-radius: var(--radius); box-shadow: var(--shadow);
-  overflow:hidden;
-}
-.card .card-media, .card .text{ flex:1 1 360px; min-width:0; }
-
-.card .card-media{
-  display:block; width:100%; aspect-ratio: 16 / 10;
-  overflow:hidden; background:#000;
-}
-.card .card-media > img{
-  width:100%; height:100%; object-fit: cover; object-position: center; display:block;
-}
-.card .text{
-  padding: clamp(16px, 2.2vw, 22px);
-  display:flex; flex-direction:column;
-}
-.card h2{margin: 6px 0 8px; font-size: clamp(20px, 2.4vw, 28px)}
-.card p{margin: 0 0 12px; overflow-wrap:anywhere}
-.card:nth-child(odd){ flex-direction: row-reverse; }
-
-@media (max-width: 1100px){
-  .card .card-media{ aspect-ratio: 4 / 3; }
-}
-@media (max-width: 980px){
-  .card{ flex-direction: column; }
-  .card .card-media{ aspect-ratio: 4 / 3; background: transparent; }
-  .card .card-media > img{ width:100%; height:100%; object-fit: cover; }
-}
-
-/* ========== Pitch ========== */
-.container2 h1, .container2 h2{margin:0 0 8px}
+/* Pitch */
+.container2 h1,.container2 h2{margin:0 0 8px}
 .container2 p{margin:8px 0}
 
-/* ========== Map embed ========== */
+/* Map */
 #location iframe{border:0}
 
-/* ========== Footer ========== */
-.main-footer{
-  margin-top: 40px; background: #0c1028; color: #dbe0ff;
-  text-align:center; padding: 16px 10px; border-top: 4px solid var(--nl-blue);
-}
+/* Footer */
+.main-footer{margin-top:40px;background:#0c1028;color:#dbe0ff;text-align:center;padding:16px 10px;border-top:4px solid var(--nl-blue)}
 .main-footer a{color:#e7ecff}
 .main-footer p{margin:8px 0}
-.footer-socials{
-  display:flex; justify-content:center; gap:14px; margin:8px 0 2px;
-}
-.footer-socials a{
-  display:inline-flex; width:40px; height:40px; border-radius:50%;
-  align-items:center; justify-content:center; background:#111533; color:#e7ecff; border:1px solid #2a2f55;
-}
+.footer-socials{display:flex;justify-content:center;gap:14px;margin:8px 0 2px}
+.footer-socials a{display:inline-flex;width:40px;height:40px;border-radius:50%;align-items:center;justify-content:center;background:#111533;color:#e7ecff;border:1px solid #2a2f55}
 .footer-socials a:hover{filter:brightness(1.08)}
-.footer-socials .tiktok-svg{ width:18px; height:18px }
+.footer-socials .tiktok-svg{width:18px;height:18px}
 
-/* ========== Form/inputs ========== */
-input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="time"], select, textarea{
-  width:100%; padding:12px 14px; border-radius:12px; border:1px solid #cfd3ea; background:#fff; font:inherit;
-}
-input:focus, select:focus, textarea:focus{outline:none; box-shadow: var(--focus); border-color: var(--nl-blue)}
+/* Form */
+input[type="text"],input[type="email"],input[type="tel"],input[type="date"],input[type="time"],select,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #cfd3ea;background:#fff;font:inherit}
+input:focus,select:focus,textarea:focus{outline:none;box-shadow:var(--focus);border-color:var(--nl-blue)}
 
-/* ========== RTL verbeteringen ========== */
-[dir="rtl"] body{direction: rtl}
-@media (max-width:980px){
-  [dir="rtl"] .card{flex-direction: column}
-}
+/* RTL */
+[dir="rtl"] body{direction:rtl}
+@media (max-width:980px){[dir="rtl"] .card{flex-direction:column}}
 
-/* ========== Print (simpel) ========== */
+/* Print */
 @media print{
   .lang-switch{display:none !important}
-  .parallax{min-height:auto; background:none; color:#000}
+  .parallax{min-height:auto;background:none;color:#000}
   .hero-logo{display:none}
   .parallax h1 hr{border-top-color:#000}
 }
