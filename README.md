@@ -1,12 +1,13 @@
-![Company Logo](./images/logo-min.png "Mein Lager Logo")
+![Company Logo](./images/logo-min.png "Elegant Barbershop Logo")
 
-# Mein Lager Website
+# Elegant Barbershop Website
 
-Welcome to the **Mein Lager** website repository. This website represents our company, **Mein Lager**, providing detailed information about our services, contact details, and more.
+Welcome to the **Elegant Barbershop** website repository.  
+This website represents our barbershop in the heart of ’s-Hertogenbosch, providing detailed information about our services, location, and contact details.
 
 ## Table of Contents
 
-- [About Mein Lager](#about-mein-lager)
+- [About Elegant Barbershop](#about-elegant-barbershop)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Setup and Deployment](#setup-and-deployment)
@@ -17,21 +18,23 @@ Welcome to the **Mein Lager** website repository. This website represents our co
 
 ---
 
-## About Mein Lager
+## About Elegant Barbershop
 
-**Mein Lager** specializes in secure storage solutions tailored to individual and business needs.  
-Our mission is to provide seamless and efficient storage services to our customers.
+**Elegant Barbershop** is located at *Hinthamerstraat 138, 5211 MT, ’s-Hertogenbosch*.  
+We specialize in modern and classic haircuts, beard styling, skin fades, and traditional hot towel shaves.  
+Our mission is to create a chill vibe with professional service and high-quality care.  
 
-Visit the live site: [Mein Lager](https://ferrannl.github.io/meinlager/index.html)
+Visit the live site: [Elegant Barbershop](https://ferrannl.github.io/elegantbarbers/index.html)
 
 ---
 
 ## Features
 
-- **Responsive Design**: Optimized for viewing on all devices, including mobile, tablet, and desktop.
-- **Intuitive Navigation**: Easy-to-use interface for quick access to company information and services.
-- **Service Overview**: Detailed descriptions of what Mein Lager offers.
-- **Contact Section**: A straightforward way for users to get in touch with the company.
+- **Responsive Design**: Works beautifully on all devices — mobile, tablet, and desktop.
+- **Multi-language Support**: Available in Dutch, English, Polish, and Arabic.
+- **Services Overview**: Clear descriptions of our haircut, beard, and shaving services.
+- **Contact & Booking**: Easy ways to get in touch or book an appointment via WhatsApp or phone.
+- **Location Map**: Embedded Google Maps to help customers find us easily.
 
 ---
 
@@ -40,8 +43,8 @@ Visit the live site: [Mein Lager](https://ferrannl.github.io/meinlager/index.htm
 The website was built using the following technologies:
 
 - **HTML5**: For semantic and structured content.
-- **CSS3**: For styling and responsive design.
-- **JavaScript**: For interactive elements.
+- **CSS3**: For styling, responsive layout, and theme colors.
+- **JavaScript**: For interactivity and language switching.
 
 ---
 
@@ -49,22 +52,12 @@ The website was built using the following technologies:
 
 ### Prerequisites
 - A modern web browser (e.g., Chrome, Firefox).
-- (If hosting the project) A web server capable of serving static files or your chosen backend.
+- (If hosting the project) A web server capable of serving static files.
 
 ### Steps to Run Locally
-Clone the repository:
+Clone the repository and open `index.html` in your browser:
 
-
-# Copyright
-
-© 2024 Mein Lager. All rights reserved.
-
-Unauthorized copying, distribution, or modification of this content is prohibited without prior written permission from Mein Lager.
-
-This website and its contents, including but not limited to text, graphics, logos, and designs, are the intellectual property of Mein Lager and are protected by copyright law. Use of any part of this website without explicit permission may result in legal action.
-
-Visit our website: [Mein Lager](https://meinlager.org/)
-
-For inquiries, please contact us at:  
-**Email**: [info@meinlager.org](mailto:info@meinlager.org)  
-**Phone**: 069 95418900
+```bash
+git clone https://github.com/ferrannl/elegantbarbers.git
+cd elegantbarbers
+open index.html
