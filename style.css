@@ -153,3 +153,41 @@ input:focus,select:focus,textarea:focus{outline:none;box-shadow:var(--focus);bor
   .card .text > *{ margin:0 }
   .card .text > * + *{ margin-top:10px }
 }
+
+/* --- Mobile text always visible under image (fix for card 1 & 3) --- */
+@media (max-width: 980px){
+  /* Stabiel stapelen: eerst image, dan tekst */
+  .card{
+    display: grid;                 /* i.p.v. flex — geen equal-height gedoe */
+    grid-template-columns: 1fr;
+    overflow: visible;             /* voorkom dat content ‘afgekapt’ wordt */
+  }
+  .card .card-media{
+    order: 0;
+    aspect-ratio: 4 / 3;
+  }
+  .card .card-media > img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Tekst: altijd zichtbaar en boven eigen witte achtergrond */
+  .card .text{
+    order: 1;
+    position: relative;
+    z-index: 1;                    /* nooit onder de afbeelding */
+    background: #fff;              /* contrasterende laag (veilig) */
+    color: var(--ink);
+    padding: 12px 14px;
+    display: block;
+    height: auto !important;
+    min-height: 0 !important;
+    flex: none !important;         /* wist eventuele erfenis */
+  }
+
+  /* Compacte verticale spacing */
+  .card .text > *{ margin: 0; }
+  .card .text > * + *{ margin-top: 10px; }
+}
