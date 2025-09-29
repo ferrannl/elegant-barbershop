@@ -81,38 +81,7 @@ figure{margin:0}
 .elementor-widget-container{font-size:.98rem}
 .notice-card{background:linear-gradient(180deg,#fff,#fafbff);border:1px solid var(--muted);border-radius:12px;padding:12px}
 
-/* ===== Instagram grid (NEW) ===== */
-.instagrid{
-  display:grid;
-  gap:18px;
-  grid-template-columns: repeat(2, 1fr);
-}
-.insta{
-  background:#fff;
-  border:1px solid var(--muted);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-  overflow:hidden;
-}
-.insta-embed{
-  display:block;
-  width:100%;
-  height:auto;
-  aspect-ratio: 9 / 16;      /* good default for Reels; switches fluidly */
-  border:0;
-}
-.insta-note{
-  text-align:center;
-  margin:10px 0 0;
-  font-size:.98rem;
-  opacity:.85;
-}
-@media (max-width:980px){
-  .instagrid{grid-template-columns:1fr;gap:12px}
-  .insta-embed{aspect-ratio: 9 / 16}
-}
-
-/* (Legacy card styles kept in case you re-enable them somewhere else) */
+/* Gallery / Diensten */
 .gallery{display:grid;gap:18px}
 .card{position:relative;isolation:isolate;display:flex;align-items:stretch;gap:0;background:#fff;border:1px solid var(--muted);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
 .card .card-media,.card .text{flex:1 1 360px;min-width:0}
