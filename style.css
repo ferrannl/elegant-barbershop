@@ -1,4 +1,3 @@
-/* style.css */
 /* -------------------------------------------------------
    Elegant Barbershop – style.css
    Mobile whitespace in cards verminderd: compactere padding,
@@ -159,6 +158,7 @@ input:focus,select:focus,textarea:focus{outline:none;box-shadow:var(--focus);bor
   .hero-logo{display:none}
   .parallax h1 hr{border-top-color:#000}
 }
+
 /* Fix: cards rekken niet meer uit op mobiel (geen extra whitespace) */
 @media (max-width: 980px){
   .card .card-media,
@@ -166,7 +166,6 @@ input:focus,select:focus,textarea:focus{outline:none;box-shadow:var(--focus);bor
     flex: 0 0 auto;   /* i.p.v. flex:1..; voorkomt uitrekken */
   }
 
-  /* optioneel: verzeker compacte spacing */
   .card .text{
     padding: 12px 14px 12px;
   }
@@ -176,11 +175,10 @@ input:focus,select:focus,textarea:focus{outline:none;box-shadow:var(--focus);bor
 
 /* --- Mobile text always visible under image (fix for card 1 & 3) --- */
 @media (max-width: 980px){
-  /* Stabiel stapelen: eerst image, dan tekst */
   .card{
-    display: grid;                 /* i.p.v. flex — geen equal-height gedoe */
+    display: grid;
     grid-template-columns: 1fr;
-    overflow: visible;             /* voorkom dat content ‘afgekapt’ wordt */
+    overflow: visible;
   }
   .card .card-media{
     order: 0;
@@ -193,21 +191,19 @@ input:focus,select:focus,textarea:focus{outline:none;box-shadow:var(--focus);bor
     object-fit: cover;
   }
 
-  /* Tekst: altijd zichtbaar en boven eigen witte achtergrond */
   .card .text{
     order: 1;
     position: relative;
-    z-index: 1;                    /* nooit onder de afbeelding */
-    background: #fff;              /* contrasterende laag (veilig) */
+    z-index: 1;
+    background: #fff;
     color: var(--ink);
     padding: 12px 14px;
     display: block;
     height: auto !important;
     min-height: 0 !important;
-    flex: none !important;         /* wist eventuele erfenis */
+    flex: none !important;
   }
 
-  /* Compacte verticale spacing */
   .card .text > *{ margin: 0; }
   .card .text > * + *{ margin-top: 10px; }
 }
