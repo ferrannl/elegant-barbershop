@@ -1,5 +1,3 @@
-// scripts/script.js
-
 /* Elegant Barbers – basisinteractie */
 
 // Mobiele navigatie togglen
@@ -56,7 +54,8 @@ if (bookingForm) {
       await new Promise((r) => setTimeout(r, 600));
 
       // Toon bevestiging
-      statusEl.textContent = 'Bedankt! We hebben je aanvraag ontvangen. We nemen snel contact op om te bevestigen.';
+      statusEl.textContent =
+        'Bedankt! We hebben je aanvraag ontvangen. We nemen snel contact op om te bevestigen.';
       statusEl.className = 'form-status success';
 
       // WhatsApp deeplink klaarzetten (optioneel)
@@ -69,11 +68,15 @@ if (bookingForm) {
         `Opmerking: ${payload.message || "-"}`
       );
       const waLink = `https://wa.me/31731234567?text=${message}`;
-      statusEl.insertAdjacentHTML('beforeend', ` <a class="btn btn-outline" style="margin-left:8px" href="${waLink}" target="_blank" rel="noopener">Bevestig via WhatsApp</a>`);
+      statusEl.insertAdjacentHTML(
+        'beforeend',
+        ` <a class="btn btn-outline" style="margin-left:8px" href="${waLink}" target="_blank" rel="noopener">Bevestig via WhatsApp</a>`
+      );
 
       bookingForm.reset();
     } catch (err) {
-      statusEl.textContent = 'Er ging iets mis. Probeer het opnieuw of neem telefonisch contact op.';
+      statusEl.textContent =
+        'Er ging iets mis. Probeer het opnieuw of neem telefonisch contact op.';
       statusEl.className = 'form-status error';
     }
   });
