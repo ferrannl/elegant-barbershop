@@ -1,3 +1,5 @@
+// scripts/script.js
+
 /* Elegant Barbers – basisinteractie */
 
 // Mobiele navigatie togglen
