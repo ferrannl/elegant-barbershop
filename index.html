@@ -128,7 +128,7 @@
         <!-- Diensten -->
         <section class="container" id="services">
           <div class="gallery">
-            <!-- Card 1 unchanged -->
+            <!-- Card 1 -->
             <article class="card">
               <figure class="card-media">
                 <img src="bild4.png" alt="Knippen in de stoel" loading="lazy" />
@@ -190,10 +190,12 @@
         </p>
       </section>
 
-      <!-- Locatie -->
+      <!-- Locatie + 360° Street View -->
       <section class="container2" id="location">
         <h2 data-i18n="loc_title">Je vindt ons hier</h2>
         <p>Hinthamerstraat 138, 5211 MT ’s-Hertogenbosch</p>
+
+        <!-- Google Maps -->
         <div style="max-width:1000px;margin:10px auto 0;">
           <iframe
             title="Elegant Barbershop locatie"
@@ -202,6 +204,24 @@
             referrerpolicy="no-referrer-when-downgrade"
             src="https://www.google.com/maps?q=Hinthamerstraat%20138,%205211%20MT%20's-Hertogenbosch&output=embed">
           </iframe>
+        </div>
+
+        <!-- 360° Street View (your URL) -->
+        <div class="streetview-wrap">
+          <h3 data-i18n="loc_360_title">Kijk even rond in de straat</h3>
+          <p data-i18n="loc_360_sub">
+            Sleep, zoom en draai de 360°-view voor een betere indruk van de omgeving.
+          </p>
+          <div class="streetview-frame">
+            <iframe
+              title="Elegant Barbershop 360° street view"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+              style="width:100%;height:420px;border:0;border-radius:12px"
+              src="https://www.google.com/local/place/fid/0x47c6ef0037339da9:0x106f416e13093e4e/photosphere?iu=https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid%3Dhr4WnGysmpJopySjv9lPOQ%26cb_client%3Dlu.gallery.gps%26w%3D160%26h%3D106%26yaw%3D0.63257146%26pitch%3D0%26thumbfov%3D100&ik=CAISFmhyNFduR3lzbXBKb3B5U2p2OWxQT1E%3D">
+            </iframe>
+          </div>
         </div>
       </section>
     </main>
@@ -267,6 +287,8 @@
         booking_call: "Bel 073 123 4567",
 
         loc_title: "Je vindt ons hier",
+        loc_360_title: "Kijk even rond in de straat",
+        loc_360_sub: "Sleep, zoom en draai de 360°-view voor een betere indruk van de omgeving.",
 
         footer_privacy: "Privacy",
         footer_terms: "Voorwaarden",
@@ -305,6 +327,8 @@
         booking_call: "Call 073 123 4567",
 
         loc_title: "Find us here",
+        loc_360_title: "Take a look around the street",
+        loc_360_sub: "Drag, zoom and rotate the 360° view to get a better feel for the area.",
 
         footer_privacy: "Privacy",
         footer_terms: "Terms",
@@ -343,6 +367,8 @@
         booking_call: "Zadzwoń 073 123 4567",
 
         loc_title: "Tu nas znajdziesz",
+        loc_360_title: "Rozejrzyj się po ulicy",
+        loc_360_sub: "Przeciągaj, przybliżaj i obracaj widok 360°, żeby lepiej poczuć okolicę.",
 
         footer_privacy: "Prywatność",
         footer_terms: "Regulamin",
@@ -381,6 +407,8 @@
         booking_call: "اتصل 073 123 4567",
 
         loc_title: "تلاقينا هنا",
+        loc_360_title: "لفّة سريعة في الشارع",
+        loc_360_sub: "اسحب وقرّب ولفّ عرض 360° عشان تاخذ فكرة أحسن عن المنطقة.",
 
         footer_privacy: "الخصوصية",
         footer_terms: "الشروط",
